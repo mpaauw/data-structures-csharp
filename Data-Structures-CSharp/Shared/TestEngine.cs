@@ -12,7 +12,7 @@ namespace Data_Structures_CSharp.Shared
 
         private readonly int DOMAIN_UPPER_BOUND;
 
-        private int[] elements;
+        public int[] elements { get; set; }
 
         /// <summary>
         /// Default constructor.
