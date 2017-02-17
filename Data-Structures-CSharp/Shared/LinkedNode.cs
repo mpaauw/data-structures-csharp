@@ -15,6 +15,7 @@ namespace Data_Structures_CSharp.Shared
         public LinkedNode(T input)
         {
             this.data = input;
+            this.next = null;
         }
 
         public T getData()
