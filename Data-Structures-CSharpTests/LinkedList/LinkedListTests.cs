@@ -14,7 +14,7 @@ namespace Data_Structures_CSharp.LinkedList.Tests
     [TestClass]
     public class LinkedListTests
     {
-        private int initialValue = 101;
+        private int initialValue;
         private int[] listValues = { 25, 1337, 23, 100000, -7, 0 };
         private LinkedList<int> linkedList;
 
@@ -24,6 +24,7 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         /// </summary>
         public LinkedListTests()
         {
+            this.initialValue = 101;
             linkedList = new LinkedList<int>(initialValue);
         }
 
