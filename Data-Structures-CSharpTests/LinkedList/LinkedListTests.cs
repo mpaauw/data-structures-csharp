@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data_Structures_CSharp.Shared;
 
 namespace Data_Structures_CSharp.LinkedList.Tests
 {
@@ -14,8 +15,12 @@ namespace Data_Structures_CSharp.LinkedList.Tests
     [TestClass]
     public class LinkedListTests
     {
-        private int initialValue;
-        private int[] listValues = { 25, 1337, 23, 100000, -7, 0 };
+        private const int TEST_BREADTH = 200;
+
+        private const int TEST_DEPTH = 50000;
+
+        private TestEngine testDriver;
+
         private LinkedList<int> linkedList;
 
         /// <summary>
@@ -24,8 +29,8 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         /// </summary>
         public LinkedListTests()
         {
-            this.initialValue = 101;
-            linkedList = new LinkedList<int>(initialValue);
+            this.testDriver = new TestEngine(TEST_BREADTH, TEST_DEPTH);
+            linkedList = new LinkedList<int>(this.testDriver.generateRandomElement());
         }
 
         /// <summary>
@@ -35,11 +40,11 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         public void getSizeTest()
         {
             // arrange
-            foreach(int value in listValues)
+            foreach(int value in this.testDriver.elements)
             {
                 linkedList.insert(value);
             }
-            int expectedSize = listValues.Length + 1;
+            int expectedSize = this.testDriver.elements.Length + 1;
             // act
             int actualSize = linkedList.getSize();
             // assert
@@ -55,7 +60,7 @@ namespace Data_Structures_CSharp.LinkedList.Tests
             // arrange
             int expectedSize = linkedList.getSize();
             // act / assert
-            foreach(int value in listValues)
+            foreach(int value in testDriver.elements)
             {
                 linkedList.insert(value);
                 expectedSize++;
@@ -71,13 +76,13 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         public void deleteTest()
         {
             // arrange
-            foreach(int value in listValues)
+            foreach(int value in this.testDriver.elements)
             {
                 linkedList.insert(value);
             }
             int expectedSize = linkedList.getSize();
             // act / assert
-            foreach(int value in listValues)
+            foreach(int value in this.testDriver.elements)
             {
                 Assert.IsTrue(linkedList.search(value));
                 linkedList.delete(value);
@@ -95,13 +100,13 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         {
             // arrange
             int nonExistentValue = 321;
-            foreach (int value in listValues)
+            foreach (int value in this.testDriver.elements)
             {
                 linkedList.insert(value);
             }
             // act / assert
             Assert.IsFalse(linkedList.search(nonExistentValue));
-            foreach (int value in listValues)
+            foreach (int value in this.testDriver.elements)
             {
                 Assert.IsTrue(linkedList.search(value));
             }
