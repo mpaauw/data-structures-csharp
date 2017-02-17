@@ -16,25 +16,42 @@ namespace Data_Structures_CSharp.LinkedList
 
         private int size;
 
+        /// <summary>
+        /// Default constructor, assigns initial head of list to an input parameter and increments the size of the list by 1.
+        /// </summary>
+        /// <param name="input">Item to be set as the initial head of the list.</param>
         public LinkedList(T input)
         {
             this.head = new LinkedListNode<T>(input);
             this.size++;
         }
 
+        /// <summary>
+        /// Returns the current size of the list..
+        /// </summary>
+        /// <returns>Returns an int value representing the current size of the list.</returns>
         public int getSize()
         {
             return this.size;
         }
 
+        /// <summary>
+        /// Inserts a value into the front of the list, and increments the size of the list by 1.
+        /// The value is inserted into the front of the list in order to avoid costly traversal for each insertion.
+        /// </summary>
+        /// <param name="input">Item to be passed and added to the front of the list.</param>
         public void insert(T input)
         {
             LinkedListNode<T> newNode = new LinkedListNode<T>(input);
-            newNode.setNext(this.head); // insert node to beginning of list to avoid traversal
+            newNode.setNext(this.head);
             this.head = newNode;
             this.size++;
         }
 
+        /// <summary>
+        /// Deletes the first occurence of a value from the list, and decrements the size of the list by 1.
+        /// </summary>
+        /// <param name="input">Item to be searched for and removed from the list.</param>
         public void delete(T input)
         {
             LinkedListNode<T> temp = this.head;
@@ -66,6 +83,12 @@ namespace Data_Structures_CSharp.LinkedList
             } while (temp != null);
         }
 
+        /// <summary>
+        /// Determines whether or not a specified value exists within the list.
+        /// Uses a wrapper method in order to achieve a recursive search.
+        /// </summary>
+        /// <param name="input">Item to be searched for within the list.</param>
+        /// <returns>Returns true if the list contains the search term, false if otherwise.</returns>
         public bool search(T input)
         {
             LinkedListNode<T> temp = this.head;
