@@ -9,47 +9,17 @@ namespace Data_Structures_CSharp.BinarySearchTree
 {
     class BinarySearchTreeNode<T> : Node<T>
     {
-        private BinarySearchTreeNode<T> parent;
+        public BinarySearchTreeNode<T> parent { get; set; }
 
-        private BinarySearchTreeNode<T> left;
+        public BinarySearchTreeNode<T> left { get; set; }
 
-        private BinarySearchTreeNode<T> right;
+        public BinarySearchTreeNode<T> right { get; set; }
 
         public BinarySearchTreeNode(T input) : base(input)
         {
             this.parent = null;
             this.left = null;
             this.right = null;
-        }
-
-        public BinarySearchTreeNode<T> getParent()
-        {
-            return this.parent;
-        }
-
-        public void setParent(BinarySearchTreeNode<T> input)
-        {
-            this.parent = input;
-        }
-
-        public BinarySearchTreeNode<T> getLeft()
-        {
-            return this.left;
-        }
-
-        public void setLeft(BinarySearchTreeNode<T> input)
-        {
-            this.left = input;
-        }
-
-        public BinarySearchTreeNode<T> getRight()
-        {
-            return this.right;
-        }
-
-        public void setRight(BinarySearchTreeNode<T> input)
-        {
-            this.right = input;
         }
     }
 }
