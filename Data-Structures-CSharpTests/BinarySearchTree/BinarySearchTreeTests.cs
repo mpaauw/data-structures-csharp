@@ -114,6 +114,21 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void deleteTest()
         {
+            // arrange
+            foreach(int value in this.testDriver.elements)
+            {
+                bst.insert(value);
+            }
+            int expectedSize = bst.getSize();
+            // act / assert
+            foreach(int value in this.testDriver.elements)
+            {
+                Assert.IsTrue(bst.search(value));
+                bst.delete(value);
+                expectedSize--;
+                Assert.IsFalse(bst.search(value));
+                Assert.AreEqual(expectedSize, bst.getSize());
+            }
         }
 
         [TestMethod]
