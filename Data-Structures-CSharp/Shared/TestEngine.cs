@@ -45,7 +45,7 @@ namespace Data_Structures_CSharp.Shared
         /// </summary>
         private void populateArray()
         {
-            for(int i = 0; i < this.SAMPLE_SIZE_UPPER_BOUND; i++)
+            for(int i = 0; i < this.elements.Length; i++)
             {
                 this.elements[i] = generateRandomElement();
             }
