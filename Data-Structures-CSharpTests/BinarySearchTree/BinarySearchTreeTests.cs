@@ -9,6 +9,9 @@ using Data_Structures_CSharp.Shared;
 
 namespace Data_Structures_CSharp.BinarySearchTree.Tests
 {
+    /// <summary>
+    /// Unit test class that tests all methods of the BinarySearchTree class.
+    /// </summary>
     [TestClass]
     public class BinarySearchTreeTests
     {
@@ -20,12 +23,19 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
 
         private BinarySearchTree<int> bst;
 
+        /// <summary>
+        /// Default constructor.
+        /// Initializes all class-wide test-dependent members.
+        /// </summary>
         public BinarySearchTreeTests()
         {
             this.testDriver = new TestEngine(TEST_BREADTH, TEST_DEPTH);
             bst = new BinarySearchTree<int>(this.testDriver.generateRandomElement());
         }
 
+        /// <summary>
+        /// Tests if the BinarySearchTree object is properly seraching for values within it's underlying tree object.
+        /// </summary>
         [TestMethod]
         public void searchTest()
         {
@@ -47,6 +57,9 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
             }
         }
 
+        /// <summary>
+        /// Tests if the BinarySearchTree object is able to properly find the smallest value within the tree.
+        /// </summary>
         [TestMethod]
         public void findMinimumTest()
         {
@@ -62,6 +75,9 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
             Assert.AreEqual(expectedMinimum, actualMinimum);
         }
 
+        /// <summary>
+        /// Tests if the BinarySearchTree object is able to properly find the largest value within the tree.
+        /// </summary>
         [TestMethod]
         public void findMaximumTest()
         {
@@ -77,6 +93,9 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
             Assert.AreEqual(expectedMaximum, actualMaximum);
         }
 
+        /// <summary>
+        /// Tests if the BinarySearchTree object is able to properly traverse the elements of the tree.
+        /// </summary>
         [TestMethod]
         public void traverseTest()
         {
@@ -96,6 +115,9 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
             }
         }
 
+        /// <summary>
+        /// Tests if the BinarySearchTree object is inserting nodes and incrementing it's size correctly.
+        /// </summary>
         [TestMethod]
         public void insertTest()
         {
@@ -111,6 +133,9 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
             }
         }
 
+        /// <summary>
+        /// Tests if the BinarySearchTree object is deleting nodes and decrementing it's size correctly.
+        /// </summary>
         [TestMethod]
         public void deleteTest()
         {
