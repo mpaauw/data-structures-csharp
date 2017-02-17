@@ -10,7 +10,7 @@ namespace Data_Structures_CSharp.LinkedList
     /// Represents a singly-linked Linked List data structure.
     /// </summary>
     /// <typeparam name="T">Underlying data type represented within the class object.</typeparam>
-    class LinkedList<T>
+    public class LinkedList<T>
     {
         private LinkedListNode<T> head;
 
