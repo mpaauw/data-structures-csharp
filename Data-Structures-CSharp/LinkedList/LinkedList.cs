@@ -28,7 +28,7 @@ namespace Data_Structures_CSharp.LinkedList
         }
 
         /// <summary>
-        /// Returns the current size of the list..
+        /// Returns the current size of the list.
         /// </summary>
         /// <returns>Returns an int value representing the current size of the list.</returns>
         public int getSize()

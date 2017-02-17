@@ -100,14 +100,14 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         public void insertTest()
         {
             // arrange
-            int expectedSize = bst.size;
+            int expectedSize = bst.getSize();
             // act / assert
             foreach(int value in testDriver.elements)
             {
                 bst.insert(value);
                 expectedSize++;
                 Assert.IsTrue(bst.search(value));
-                Assert.AreEqual(expectedSize, bst.size);
+                Assert.AreEqual(expectedSize, bst.getSize());
             }
         }
 

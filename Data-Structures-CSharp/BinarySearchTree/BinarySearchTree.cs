@@ -14,7 +14,7 @@ namespace Data_Structures_CSharp.BinarySearchTree
     {
         private BinarySearchTreeNode<T> root;
 
-        public int size { get; set; }
+        private int size;
 
         /// <summary>
         /// Default constructor.
@@ -25,6 +25,15 @@ namespace Data_Structures_CSharp.BinarySearchTree
         {
             root = new BinarySearchTreeNode<T>(input);
             this.size++;
+        }
+
+        /// <summary>
+        /// Returns the current number of elements within the tree.
+        /// </summary>
+        /// <returns>Returns an int value representing the current size of the tree.</returns>
+        public int getSize()
+        {
+            return this.size;
         }
 
         /// <summary>
