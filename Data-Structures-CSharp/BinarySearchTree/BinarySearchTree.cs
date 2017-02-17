@@ -6,18 +6,33 @@ using System.Threading.Tasks;
 
 namespace Data_Structures_CSharp.BinarySearchTree
 {
+    /// <summary>
+    /// Represents a Binary Search Tree data structure.
+    /// </summary>
+    /// <typeparam name="T">Underlying data type represented within the class object.</typeparam>
     class BinarySearchTree<T>
     {
         private BinarySearchTreeNode<T> root;
 
         private int size;
 
+        /// <summary>
+        /// Default constructor.
+        /// Assigns initial root of tree to an input parameter and increments the size of the tree by 1.
+        /// </summary>
+        /// <param name="input">Item to be set as the initial root of the tree.</param>
         public BinarySearchTree(T input)
         {
             root = new BinarySearchTreeNode<T>(input);
             this.size++;
         }
 
+        /// <summary>
+        /// Determines whether or not a specified value exists within the tree.
+        /// Uses a wrapper method in order to achieve a recursive search.
+        /// </summary>
+        /// <param name="input">Item to be searched for within the tree.</param>
+        /// <returns>Returns true if the tree contains the search term, false if otherwise.</returns>
         public bool search(IComparable input)
         {
             BinarySearchTreeNode<T> temp = this.root;
@@ -43,6 +58,10 @@ namespace Data_Structures_CSharp.BinarySearchTree
             }
         }
 
+        /// <summary>
+        /// Finds the smallest value within the tree.
+        /// </summary>
+        /// <returns>Returns an object of type T representing the smallest value within the tree.</returns>
         public T findMinimum()
         {
             BinarySearchTreeNode<T> temp = this.root;
@@ -57,6 +76,10 @@ namespace Data_Structures_CSharp.BinarySearchTree
             return findMinimum(node.left);
         }
 
+        /// <summary>
+        /// Finds the largest value within the tree.
+        /// </summary>
+        /// <returns>REturns an object of type T representing the largest value within the tree.</returns>
         public T findMaximum()
         {
             BinarySearchTreeNode<T> temp = this.root;
@@ -71,6 +94,10 @@ namespace Data_Structures_CSharp.BinarySearchTree
             return findMaximum(node.right);
         }
 
+        /// <summary>
+        /// Traverses the tree using an Inorder traversal pattern.
+        /// </summary>
+        /// <returns>Returns an array of BinarySearchTreeNode objects of type T ordered in the sequence they were encountered during tree traversal.</returns>
         public T[] traverse()
         {
             BinarySearchTreeNode<T> temp = this.root;
@@ -87,6 +114,11 @@ namespace Data_Structures_CSharp.BinarySearchTree
             return order;
         }
 
+        /// <summary>
+        /// Inserts a value into the tree at an appropriate spot given the rules of a Binary Search Tree.
+        /// Performs insertion logic iteratively.
+        /// </summary>
+        /// <param name="input">Item to be passed and added to the tree; declared as an IComparable type in order to provide comparisons between the key values of other nodes within the tree.</param>
         public void insert(IComparable input)
         {
             if(this.root == null)
