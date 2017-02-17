@@ -6,7 +6,35 @@ using System.Threading.Tasks;
 
 namespace Data_Structures_CSharp.Shared
 {
-    class Node
+    abstract class LinkedNode<T>
     {
+        private T data;
+
+        private LinkedNode<T> next;
+
+        public LinkedNode(T input)
+        {
+            this.data = input;
+        }
+
+        public T getData()
+        {
+            return this.data;
+        }
+
+        public void setData(T input)
+        {
+            this.data = input;
+        }
+
+        public LinkedNode<T> getNext()
+        {
+            return this.next;
+        }
+
+        public void setNext(LinkedNode<T> input)
+        {
+            this.next = input;
+        }
     }
 }
