@@ -71,7 +71,7 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         public void deleteTest()
         {
             // arrange
-            foreach( int value in listValues)
+            foreach(int value in listValues)
             {
                 linkedList.insert(value);
             }
