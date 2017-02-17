@@ -61,7 +61,7 @@ namespace Data_Structures_CSharp.LinkedList
             {
                 if (temp.getData().Equals(input))
                 {
-                    if(!predecessor.Equals(null))
+                    if(predecessor != null)
                     {
                         predecessor.setNext(temp.getNext());
                         temp = predecessor;
@@ -70,7 +70,7 @@ namespace Data_Structures_CSharp.LinkedList
                     }
                     else
                     {
-                        if (!temp.getNext().Equals(null))
+                        if (temp.getNext() != null)
                         {
                             temp = (LinkedListNode<T>)temp.getNext();
                             this.head = temp;
@@ -97,7 +97,7 @@ namespace Data_Structures_CSharp.LinkedList
         }
         private bool search(T input, LinkedListNode<T> node)
         {
-            if (node.getData().Equals(null))
+            if (node == null)
             {
                 return false;
             }

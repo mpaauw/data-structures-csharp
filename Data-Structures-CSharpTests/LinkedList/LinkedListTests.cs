@@ -11,7 +11,7 @@ namespace Data_Structures_CSharp.LinkedList.Tests
     [TestClass]
     public class LinkedListTests
     {
-        private int initialValue = 23;
+        private int initialValue = 101;
         private int[] listValues = { 25, 1337, 23, 100000, -7, 0 };
         private LinkedList<int> linkedList;
 
@@ -28,7 +28,7 @@ namespace Data_Structures_CSharp.LinkedList.Tests
             {
                 linkedList.insert(value);
             }
-            int expectedSize = listValues.Length + 1; // account for initial value
+            int expectedSize = listValues.Length + 1;
             // act
             int actualSize = linkedList.getSize();
             // assert
@@ -45,23 +45,46 @@ namespace Data_Structures_CSharp.LinkedList.Tests
             {
                 linkedList.insert(value);
                 expectedSize++;
-                bool containsValue = linkedList.search(value);
-                int actualSize = linkedList.getSize();
-                Assert.IsTrue(containsValue);
-                Assert.AreEqual(expectedSize, actualSize);             
+                Assert.IsTrue(linkedList.search(value));
+                Assert.AreEqual(expectedSize, linkedList.getSize());             
             }
         }
 
         [TestMethod]
         public void deleteTest()
         {
-            //Assert.Fail();
+            // arrange
+            foreach( int value in listValues)
+            {
+                linkedList.insert(value);
+            }
+            int expectedSize = linkedList.getSize();
+            // act / assert
+            foreach(int value in listValues)
+            {
+                Assert.IsTrue(linkedList.search(value));
+                linkedList.delete(value);
+                expectedSize--;
+                Assert.IsFalse(linkedList.search(value));
+                Assert.AreEqual(expectedSize, linkedList.getSize());
+            }
         }
 
         [TestMethod]
         public void searchTest()
         {
-            //Assert.Fail();
+            // arrange
+            int nonExistentValue = 321;
+            foreach (int value in listValues)
+            {
+                linkedList.insert(value);
+            }
+            // act / assert
+            Assert.IsFalse(linkedList.search(nonExistentValue));
+            foreach (int value in listValues)
+            {
+                Assert.IsTrue(linkedList.search(value));
+            }
         }
     }
 }
