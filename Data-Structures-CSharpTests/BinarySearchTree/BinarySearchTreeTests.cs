@@ -50,11 +50,31 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void findMinimumTest()
         {
+            // arrange
+            foreach (int value in this.testDriver.elements)
+            {
+                this.bst.insert(value);
+            }
+            int expectedMinimum = this.testDriver.elements.Min();
+            // act
+            int actualMinimum = this.bst.findMinimum();
+            // assert
+            Assert.AreEqual(expectedMinimum, actualMinimum);
         }
 
         [TestMethod]
         public void findMaximumTest()
         {
+            // arrange
+            foreach(int value in this.testDriver.elements)
+            {
+                this.bst.insert(value);
+            }
+            int expectedMaximum = this.testDriver.elements.Max();
+            // act
+            int actualMaximum = this.bst.findMaximum();
+            // assert
+            Assert.AreEqual(expectedMaximum, actualMaximum);
         }
 
         [TestMethod]
