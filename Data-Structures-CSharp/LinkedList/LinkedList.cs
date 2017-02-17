@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Data_Structures_CSharp.LinkedList
 {
+    /// <summary>
+    /// Represents a singly-linked Linked List data structure.
+    /// </summary>
+    /// <typeparam name="T">the underlying data type that the LinkedList class represents</typeparam>
     class LinkedList<T>
     {
         private LinkedListNode<T> head;
@@ -43,6 +47,7 @@ namespace Data_Structures_CSharp.LinkedList
                     {
                         predecessor.setNext(temp.getNext());
                         temp = predecessor;
+                        this.size--;
                         return;
                     }
                     else
@@ -51,6 +56,7 @@ namespace Data_Structures_CSharp.LinkedList
                         {
                             temp = (LinkedListNode<T>)temp.getNext();
                             this.head = temp;
+                            this.size--;
                             return;
                         }
                     }
