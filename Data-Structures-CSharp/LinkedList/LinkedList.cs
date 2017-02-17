@@ -59,7 +59,7 @@ namespace Data_Structures_CSharp.LinkedList
             LinkedListNode<T> predecessor = null;
             do
             {
-                if (temp.getData().Equals(input))
+                if (temp.data.Equals(input))
                 {
                     if(predecessor != null)
                     {
@@ -101,7 +101,7 @@ namespace Data_Structures_CSharp.LinkedList
             {
                 return false;
             }
-            else if (node.getData().Equals(input))
+            else if (node.data.Equals(input))
             {
                 return true;
             }
