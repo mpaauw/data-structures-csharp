@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Data_Structures_CSharp.LinkedList.Tests
 {
+    /// <summary>
+    /// Unit test class that tests all methods of the LinkedList class.
+    /// </summary>
     [TestClass]
     public class LinkedListTests
     {
@@ -15,11 +18,18 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         private int[] listValues = { 25, 1337, 23, 100000, -7, 0 };
         private LinkedList<int> linkedList;
 
+        /// <summary>
+        /// Default constructor.
+        /// Initializes all class-wide test-dependent members.
+        /// </summary>
         public LinkedListTests()
         {
             linkedList = new LinkedList<int>(initialValue);
         }
 
+        /// <summary>
+        /// Tests if the LinkedList class is properly tracking the size of it's underlying list object.
+        /// </summary>
         [TestMethod]
         public void getSizeTest()
         {
@@ -35,6 +45,9 @@ namespace Data_Structures_CSharp.LinkedList.Tests
             Assert.AreEqual(expectedSize, actualSize);
         }
 
+        /// <summary>
+        /// Tests if the LinkedList class is inserting items and incrementing it's size correctly.
+        /// </summary>
         [TestMethod]
         public void insertTest()
         {
@@ -50,6 +63,9 @@ namespace Data_Structures_CSharp.LinkedList.Tests
             }
         }
 
+        /// <summary>
+        /// Tests if the LinkedList class is deleting items and decrementing it's size correctly.
+        /// </summary>
         [TestMethod]
         public void deleteTest()
         {
@@ -70,6 +86,9 @@ namespace Data_Structures_CSharp.LinkedList.Tests
             }
         }
 
+        /// <summary>
+        /// Tests if the LinkedList class is properly searching for values within it's underlying list object.
+        /// </summary>
         [TestMethod]
         public void searchTest()
         {
