@@ -143,7 +143,6 @@ namespace Data_Structures_CSharp.BinarySearchTree
                 temp = new BinarySearchTreeNode<T>((T)input);
                 this.size++;
             }
-        }
-        
+        }     
     }
 }
