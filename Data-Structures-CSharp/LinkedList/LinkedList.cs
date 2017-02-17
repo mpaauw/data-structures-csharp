@@ -9,7 +9,7 @@ namespace Data_Structures_CSharp.LinkedList
     /// <summary>
     /// Represents a singly-linked Linked List data structure.
     /// </summary>
-    /// <typeparam name="T">the underlying data type that the LinkedList class represents</typeparam>
+    /// <typeparam name="T">Underlying data type represented within the class object.</typeparam>
     class LinkedList<T>
     {
         private LinkedListNode<T> head;
@@ -17,7 +17,8 @@ namespace Data_Structures_CSharp.LinkedList
         private int size;
 
         /// <summary>
-        /// Default constructor, assigns initial head of list to an input parameter and increments the size of the list by 1.
+        /// Default constructor.
+        /// Assigns initial head of list to an input parameter and increments the size of the list by 1.
         /// </summary>
         /// <param name="input">Item to be set as the initial head of the list.</param>
         public LinkedList(T input)
