@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Data_Structures_CSharp.Shared
 {
+    /// <summary>
+    /// Class used to quickly set up test harnesses for inheriting classes.
+    /// </summary>
     public class TestEngine
     {
         private readonly int SAMPLE_SIZE_UPPER_BOUND;
