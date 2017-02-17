@@ -130,15 +130,5 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
                 Assert.AreEqual(expectedSize, bst.getSize());
             }
         }
-
-        [TestMethod]
-        public void balanceTest()
-        {
-        }
-
-        [TestMethod]
-        public void getHeightTest()
-        {
-        }
     }
 }
