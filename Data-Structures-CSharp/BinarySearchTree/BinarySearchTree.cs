@@ -14,7 +14,7 @@ namespace Data_Structures_CSharp.BinarySearchTree
     {
         private BinarySearchTreeNode<T> root;
 
-        private int size;
+        public int size { get; set; }
 
         /// <summary>
         /// Default constructor.

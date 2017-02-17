@@ -80,11 +80,35 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void traverseTest()
         {
+            // arrange
+            foreach(int value in this.testDriver.elements)
+            {
+                this.bst.insert(value);
+            }
+            int expectedTraversalSize = this.testDriver.elements.Length;
+            // act
+            int[] traversalOrder = this.bst.traverse();
+            // assert
+            Assert.AreEqual(expectedTraversalSize, traversalOrder.Length);
+            foreach(int value in this.testDriver.elements)
+            {
+                Assert.IsTrue(traversalOrder.Contains(value));
+            }
         }
 
         [TestMethod]
         public void insertTest()
         {
+            // arrange
+            int expectedSize = bst.size;
+            // act / assert
+            foreach(int value in testDriver.elements)
+            {
+                bst.insert(value);
+                expectedSize++;
+                Assert.IsTrue(bst.search(value));
+                Assert.AreEqual(expectedSize, bst.size);
+            }
         }
 
         [TestMethod]
