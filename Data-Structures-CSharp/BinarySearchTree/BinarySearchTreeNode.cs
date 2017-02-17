@@ -11,7 +11,7 @@ namespace Data_Structures_CSharp.BinarySearchTree
     /// Class which represents a single node for a Binary Search Tree data structure.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class BinarySearchTreeNode<T> : Node<T>
+    public class BinarySearchTreeNode<T> : Node<T>
     {
         public BinarySearchTreeNode<T> parent { get; set; }
 

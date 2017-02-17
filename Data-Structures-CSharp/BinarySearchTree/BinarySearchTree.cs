@@ -184,7 +184,7 @@ namespace Data_Structures_CSharp.BinarySearchTree
         /// </summary>
         /// <param name="node">The node that is currently being examined for balance.</param>
         /// <returns>Recursively returns a BinarySearchTreeNode object of type T.</returns>
-        private BinarySearchTreeNode<T> balance(BinarySearchTreeNode<T> node)
+        public BinarySearchTreeNode<T> balance(BinarySearchTreeNode<T> node)
         {
             int leftHeight = getHeight(node.left, 0);
             int rightHeight = getHeight(node.right, 0);
@@ -220,7 +220,7 @@ namespace Data_Structures_CSharp.BinarySearchTree
         /// <param name="node">Current node to be checked for height.</param>
         /// <param name="height">Current value of tree height as it relates to the current node.</param>
         /// <returns>Returns an int representing the height of the tree at a given node.</returns>
-        private int getHeight(BinarySearchTreeNode<T> node, int height)
+        public int getHeight(BinarySearchTreeNode<T> node, int height)
         {
             if(node == null)
             {

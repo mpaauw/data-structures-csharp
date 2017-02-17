@@ -10,7 +10,7 @@ namespace Data_Structures_CSharp.Shared
     /// Abstract base class which represents a single node for a data structure.
     /// </summary>
     /// <typeparam name="T">Underlying data type represented within the class object.</typeparam>
-    abstract class Node<T>
+    public abstract class Node<T>
     {
         public T data { get; set; }
 
