@@ -115,43 +115,41 @@ namespace Data_Structures_CSharp.BinarySearchTree
         }
 
         /// <summary>
-        /// Inserts a value into the tree at an appropriate spot given the rules of a Binary Search Tree.
-        /// Performs insertion logic iteratively.
+        /// Recursively inserts a value into the tree at an appropriate spot given the rules of a Binary Search Tree.
         /// </summary>
         /// <param name="input">Item to be passed and added to the tree; declared as an IComparable type in order to provide comparisons between the key values of other nodes within the tree.</param>
         public void insert(IComparable input)
         {
-            if(this.root == null)
+            this.root = insert(input, this.root);
+        }
+        private BinarySearchTreeNode<T> insert(IComparable input, BinarySearchTreeNode<T> node)
+        {
+            if(node == null)
             {
-                this.root = new BinarySearchTreeNode<T>((T)input);
+                node = new BinarySearchTreeNode<T>((T)input);
                 this.size++;
+                return node;
             }
             else
             {
-                BinarySearchTreeNode<T> temp = root;
-                while(temp != null)
+                if(input.CompareTo(node.data) < 0)
                 {
-                    if(input.CompareTo(temp.data) < 0)
-                    {
-                        temp = temp.left;
-                    }
-                    else
-                    {
-                        temp = temp.right;
-                    }
+                    return insert(input, node.left);
                 }
-                temp = new BinarySearchTreeNode<T>((T)input);
-                this.size++;
+                else
+                {
+                    return insert(input, node.right);
+                }
             }
         }
         
         /// <summary>
-        /// Deletes the first occurence of a value from the tree, and decrements the size of the tree by 1.
+        /// Recursively deletes the first occurence of a value from the tree, then decrements the size of the tree by 1.
         /// </summary>
         /// <param name="input">Item to be searched for and removed from the tree; declared as an IComparable type in order to provide comparisons between the key values of other nodes.</param>
         public void delete(IComparable input)
         {
-            root = delete(input, root);
+            this.root = delete(input, this.root);
         }   
         private BinarySearchTreeNode<T> delete(IComparable input, BinarySearchTreeNode<T> node)
         {
