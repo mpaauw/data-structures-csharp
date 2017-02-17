@@ -13,7 +13,7 @@ namespace Data_Structures_CSharp.LinkedList
     /// <typeparam name="T"></typeparam>
     class LinkedListNode<T> : Node<T>
     {
-        private LinkedListNode<T> next;
+        public LinkedListNode<T> next { get; set; }
 
         /// <summary>
         /// Default constructor.
@@ -23,24 +23,6 @@ namespace Data_Structures_CSharp.LinkedList
         public LinkedListNode(T input) : base(input)
         {
             this.next = null;
-        }
-
-        /// <summary>
-        /// Returns the current node's next node pointer.
-        /// </summary>
-        /// <returns>Returns current node's next node object.</returns>
-        public LinkedListNode<T> getNext()
-        {
-            return this.next;
-        }
-
-        /// <summary>
-        /// Sets the value of the current node's next pointer to a given object.
-        /// </summary>
-        /// <param name="input">Object to be passed and set as current node's next pointer.</param>
-        public void setNext(LinkedListNode<T> input)
-        {
-            this.next = input;
         }
     }
 

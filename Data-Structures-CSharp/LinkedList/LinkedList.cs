@@ -44,7 +44,7 @@ namespace Data_Structures_CSharp.LinkedList
         public void insert(T input)
         {
             LinkedListNode<T> newNode = new LinkedListNode<T>(input);
-            newNode.setNext(this.head);
+            newNode.next = this.head;
             this.head = newNode;
             this.size++;
         }
@@ -63,16 +63,16 @@ namespace Data_Structures_CSharp.LinkedList
                 {
                     if(predecessor != null)
                     {
-                        predecessor.setNext(temp.getNext());
+                        predecessor.next = temp.next;
                         temp = predecessor;
                         this.size--;
                         return;
                     }
                     else
                     {
-                        if (temp.getNext() != null)
+                        if(temp.next != null)
                         {
-                            temp = (LinkedListNode<T>)temp.getNext();
+                            temp = (LinkedListNode<T>)temp.next;
                             this.head = temp;
                             this.size--;
                             return;
@@ -80,7 +80,7 @@ namespace Data_Structures_CSharp.LinkedList
                     }
                 }
                 predecessor = temp;
-                temp = (LinkedListNode<T>)temp.getNext();
+                temp = (LinkedListNode<T>)temp.next;
             } while (temp != null);
         }
 
@@ -107,7 +107,7 @@ namespace Data_Structures_CSharp.LinkedList
             }
             else
             {
-                return search(input, (LinkedListNode<T>)node.getNext());
+                return search(input, (LinkedListNode<T>)node.next);
             }
         }
     }
