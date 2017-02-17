@@ -29,7 +29,22 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void searchTest()
         {
-
+            // arrange
+            foreach (int value in this.testDriver.elements)
+            {
+                this.bst.insert(value);
+            }
+            int nonExistentValue;
+            do
+            {
+                nonExistentValue = this.testDriver.generateRandomElement();
+            } while (testDriver.elements.Contains(nonExistentValue));
+            // act / assert
+            Assert.IsFalse(bst.search(nonExistentValue));
+            foreach(int value in this.testDriver.elements)
+            {
+                Assert.IsTrue(bst.search(value));
+            }
         }
 
         [TestMethod]
