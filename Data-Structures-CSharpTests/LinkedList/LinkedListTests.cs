@@ -11,34 +11,57 @@ namespace Data_Structures_CSharp.LinkedList.Tests
     [TestClass]
     public class LinkedListTests
     {
-        [TestMethod]
-        public void LinkedListTest()
+        private int initialValue = 23;
+        private int[] listValues = { 25, 1337, 23, 100000, -7, 0 };
+        private LinkedList<int> linkedList;
+
+        public LinkedListTests()
         {
-            Assert.Fail();
+            linkedList = new LinkedList<int>(initialValue);
         }
 
         [TestMethod]
         public void getSizeTest()
         {
-            Assert.Fail();
+            // arrange
+            foreach(int value in listValues)
+            {
+                linkedList.insert(value);
+            }
+            int expectedSize = listValues.Length + 1; // account for initial value
+            // act
+            int actualSize = linkedList.getSize();
+            // assert
+            Assert.AreEqual(expectedSize, actualSize);
         }
 
         [TestMethod]
         public void insertTest()
         {
-            Assert.Fail();
+            // arrange
+            int expectedSize = linkedList.getSize();
+            // act / assert
+            foreach(int value in listValues)
+            {
+                linkedList.insert(value);
+                expectedSize++;
+                bool containsValue = linkedList.search(value);
+                int actualSize = linkedList.getSize();
+                Assert.IsTrue(containsValue);
+                Assert.AreEqual(expectedSize, actualSize);             
+            }
         }
 
         [TestMethod]
         public void deleteTest()
         {
-            Assert.Fail();
+            //Assert.Fail();
         }
 
         [TestMethod]
         public void searchTest()
         {
-            Assert.Fail();
+            //Assert.Fail();
         }
     }
 }
