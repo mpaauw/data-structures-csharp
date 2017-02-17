@@ -99,7 +99,11 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         public void searchTest()
         {
             // arrange
-            int nonExistentValue = 321;
+            int nonExistentValue;
+            do
+            {
+                nonExistentValue = this.testDriver.generateRandomElement();
+            } while (testDriver.elements.Contains(nonExistentValue));
             foreach (int value in this.testDriver.elements)
             {
                 linkedList.insert(value);
