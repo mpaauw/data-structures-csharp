@@ -45,8 +45,8 @@
   <ItemGroup>
     <Compile Include="BinarySearchTree\BinarySearchTree.cs" />
     <Compile Include="BinarySearchTree\BinarySearchTreeNode.cs" />
-    <Compile Include="Graph\GraphEdge.cs" />
-    <Compile Include="Graph\GraphNode.cs" />
+    <Compile Include="Graph\Graph.cs" />
+    <Compile Include="Graph\GraphEdgeNode.cs" />
     <Compile Include="LinkedList\LinkedList.cs" />
     <Compile Include="LinkedList\LinkedListNode.cs" />
     <Compile Include="Program.cs" />
