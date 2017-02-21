@@ -7,7 +7,7 @@ using Data_Structures_CSharp.Shared;
 
 namespace Data_Structures_CSharp.Graph
 {
-    class GraphNode<T> : Node<T>
+    public class GraphNode<T> : Node<T>
     {
         public GraphNode(T input) : base(input) { }
     }
