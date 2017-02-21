@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,22 +9,41 @@ namespace Data_Structures_CSharp.Graph
 {
     public class Graph<T>
     {
-        private LinkedList<T> vertices;
+        private Dictionary<GraphNode<T>, List<GraphNode<T>>> adjacencyList;
 
-        private LinkedList<T> edges;
+        public int numVertices { get; set; }
 
-        private int numVertices;
+        public int numEdges { get; set; }
 
-        private int numEdges;
+        bool directed;
 
-        public Graph()
+        public Graph(bool d = false)
         {
-            this.vertices = new LinkedList<T>();
-            this.edges = new LinkedList<T>();
+            this.adjacencyList = new Dictionary<GraphNode<T>, List<GraphNode<T>>>();
             this.numVertices = 0;
             this.numEdges = 0;
+            this.directed = d;
         }
 
+        public void insertVertex(GraphNode<T> input)
+        {
+            if (!adjacencyList.ContainsKey(input))
+            {
+                adjacencyList.Add(input, new List<GraphNode<T>>());
+                numVertices++;
+            }
+        }
 
+        public void insertEdge(GraphNode<T> x, GraphNode<T> y)
+        {
+            if (adjacencyList.ContainsKey(x))
+            {
+                if (!adjacencyList[x].Contains(y))
+                {
+                    adjacencyList[x].Add(y);
+                    numEdges++;
+                }
+            }
+        }
     }
 }
