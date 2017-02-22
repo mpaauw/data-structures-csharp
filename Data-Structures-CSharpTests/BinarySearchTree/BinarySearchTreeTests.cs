@@ -104,7 +104,7 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
             {
                 this.bst.insert(value);
             }
-            int expectedTraversalSize = this.testDriver.elements.Length;
+            int expectedTraversalSize = this.testDriver.elements.Length + 1; // account for random element generated as root of tree during construction
             // act
             int[] traversalOrder = this.bst.traverse();
             // assert
