@@ -12,7 +12,7 @@ namespace Data_Structures_CSharp.Graph.Tests
     public class GraphTests
     {
         private char[] vertices = { 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
-        private int[,] edgeIndices = new int[,] { { 0, 1 }, { 0, 4 }, { 1, 3 }, { 2, 0 }, { 5, 1 }, { 5, 6 } };
+        private int[,] edgeIndices = new int[,] { { 0, 1 }, { 0, 4 }, { 3, 5 }, { 1, 3 }, { 2, 0 }, { 5, 1 }, { 5, 6 } };
         private GraphNode<char> nodes;
         private int numEdges = 6;
         private Graph<char> graph;
