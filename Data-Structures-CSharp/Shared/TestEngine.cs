@@ -45,12 +45,17 @@ namespace Data_Structures_CSharp.Shared
 
         /// <summary>
         /// Fills the element array with random positive and negative integers within the absolute value of the provided domain upper bound.
+        /// Continue to generate random elements in each cell until a unique element has been created (no duplicates permitted within the array).
         /// </summary>
         private void populateArray()
         {
             for(int i = 0; i < this.elements.Length; i++)
             {
-                this.elements[i] = generateRandomElement();
+                do
+                {
+                    this.elements[i] = generateRandomElement();
+                } while (!this.elements.Contains(this.elements[i]));
+                
             }
         }
 

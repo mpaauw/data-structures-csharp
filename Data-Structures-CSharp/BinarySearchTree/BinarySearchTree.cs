@@ -147,7 +147,6 @@ namespace Data_Structures_CSharp.BinarySearchTree
             {
                 node.right = insert(input, node.right, node);
             }
-            //return balance(node);
             return node;
         }
         
@@ -183,61 +182,7 @@ namespace Data_Structures_CSharp.BinarySearchTree
                 node = (node.left != null) ? node.left : node.right;
                 this.size--;
             }
-            return balance(node);
+            return node;
         }  
-
-        /// <summary>
-        /// Recursively conducts balancing operations on the tree.
-        /// To be used after insertions and deletions.
-        /// </summary>
-        /// <param name="node">The node that is currently being examined for balance.</param>
-        /// <returns>Recursively returns a BinarySearchTreeNode object of type T.</returns>
-        private BinarySearchTreeNode<T> balance(BinarySearchTreeNode<T> node)
-        {
-            int leftHeight = getHeight(node.left, 0);
-            int rightHeight = getHeight(node.right, 0);
-            if(Math.Abs(leftHeight - rightHeight) > 1)
-            {
-                if(leftHeight < rightHeight)
-                {
-                    BinarySearchTreeNode<T> oldNode = node;
-                    node = node.right;
-                    BinarySearchTreeNode<T> oldLeftChild = node.left;
-                    node.left = oldNode;
-                    node.left.right = oldLeftChild;
-                }
-                else if(leftHeight > rightHeight)
-                {
-                    BinarySearchTreeNode<T> oldNode = node;
-                    node = node.left;
-                    BinarySearchTreeNode<T> oldRightChild = node.right;
-                    node.right = oldNode;
-                    node.right.left = oldRightChild;
-                }
-            }
-            else
-            {
-                return node;
-            }
-            return balance(node);
-        }
-
-        /// <summary>
-        /// Recursively finds the height of a tree given a node to parse.
-        /// </summary>
-        /// <param name="node">Current node to be checked for height.</param>
-        /// <param name="height">Current value of tree height as it relates to the current node.</param>
-        /// <returns>Returns an int representing the height of the tree at a given node.</returns>
-        private int getHeight(BinarySearchTreeNode<T> node, int height)
-        {
-            if(node == null)
-            {
-                return height;
-            }
-            height++;
-            int leftHeight = getHeight(node.left, height);
-            int rightHeight = getHeight(node.right, height);
-            return Math.Max(leftHeight, rightHeight);
-        }
     }
 }

@@ -17,7 +17,7 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
     {
         private const int TEST_BREADTH = 20;
 
-        private const int TEST_DEPTH = 50000;
+        private const int TEST_DEPTH = 100;
 
         private TestEngine testDriver;
 
