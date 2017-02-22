@@ -89,7 +89,7 @@ namespace Data_Structures_CSharp.Graph
                     {
                         child.state = GraphNode<T>.VisitState.Visiting;
                         queue.Enqueue(child);
-                        return breadthFirstSearch(queue, order);
+                        order = breadthFirstSearch(queue, order);
                     }
                 }
                 node.state = GraphNode<T>.VisitState.Visited;

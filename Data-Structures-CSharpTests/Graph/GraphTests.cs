@@ -64,5 +64,13 @@ namespace Data_Structures_CSharp.Graph.Tests
                 Assert.AreEqual(expectedSize, this.graph.numEdges);
             }
         }
+
+        [TestMethod]
+        public void breadthFirstSearchTest()
+        {
+            this.insertEdgeTest();
+
+            GraphNode<char>[] actualOrder = this.graph.breadthFirstSearch();
+        }
     }
 }
