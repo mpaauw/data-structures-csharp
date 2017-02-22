@@ -66,5 +66,35 @@ namespace Data_Structures_CSharp.Graph
                 }
             }
         }
+
+        public GraphNode<T>[] breadthFirstSearch()
+        {
+            Queue<GraphNode<T>> queue = new Queue<GraphNode<T>>();
+            queue.Enqueue(adjacencyList.Keys.ElementAt(0));
+            return breadthFirstSearch(queue, new List<GraphNode<T>>()).ToArray();
+        }
+        private List<GraphNode<T>> breadthFirstSearch(Queue<GraphNode<T>> queue, List<GraphNode<T>> order)
+        {
+            while(queue.Count() > 0)
+            {
+                GraphNode<T> node = queue.Dequeue();
+                if(node.state == GraphNode<T>.VisitState.Visited)
+                {
+                    return null; // loop encountered
+                }
+                order.Add(node);
+                foreach(GraphNode<T> child in this.adjacencyList[node])
+                {
+                    if(child.state == GraphNode<T>.VisitState.Unvisited)
+                    {
+                        child.state = GraphNode<T>.VisitState.Visiting;
+                        queue.Enqueue(child);
+                        return breadthFirstSearch(queue, order);
+                    }
+                }
+                node.state = GraphNode<T>.VisitState.Visited;
+            }
+            return order;
+        }
     }
 }
