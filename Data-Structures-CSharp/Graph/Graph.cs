@@ -145,5 +145,40 @@ namespace Data_Structures_CSharp.Graph
             }
             return order;
         }
+
+        /// <summary>
+        /// Performs a depth-first search traversal on the graph, starting at the first node within the adjacency list.
+        /// Uses a wrapper method in order to acheive a recursive traversal.
+        /// </summary>
+        /// <returns>Returns an array representing the traversal ordering of the nodes within a graph.</returns>
+        public GraphNode<T>[] depthFirstSearch()
+        {
+            Stack<GraphNode<T>> stack = new Stack<GraphNode<T>>();
+            stack.Push(this.adjacencyList.Keys.ElementAt(0));
+            return depthFirstSearch(stack, new List<GraphNode<T>>()).ToArray();
+        }
+        private List<GraphNode<T>> depthFirstSearch(Stack<GraphNode<T>> stack, List<GraphNode<T>> order)
+        {
+            while(stack.Count > 0)
+            {
+                GraphNode<T> node = stack.Pop();
+                if(node.state == GraphNode<T>.VisitState.Visited)
+                {
+                    return null; // loop encountered
+                }
+                order.Add(node);
+                foreach(GraphNode<T> child in this.adjacencyList[node])
+                {
+                    if(child.state == GraphNode<T>.VisitState.Unvisited)
+                    {
+                        child.state = GraphNode<T>.VisitState.Visiting;
+                        stack.Push(child);
+                    }
+                }
+                order = depthFirstSearch(stack, order);
+                node.state = GraphNode<T>.VisitState.Visited;
+            }
+            return order;
+        }
     }
 }
