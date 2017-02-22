@@ -39,7 +39,6 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void searchTest()
         {
-            // arrange
             foreach (int value in this.testDriver.elements)
             {
                 this.bst.insert(value);
@@ -49,7 +48,6 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
             {
                 nonExistentValue = this.testDriver.generateRandomElement();
             } while (testDriver.elements.Contains(nonExistentValue));
-            // act / assert
             Assert.IsFalse(bst.search(nonExistentValue));
             foreach(int value in this.testDriver.elements)
             {
@@ -63,15 +61,12 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void findMinimumTest()
         {
-            // arrange
             foreach (int value in this.testDriver.elements)
             {
                 this.bst.insert(value);
             }
             int expectedMinimum = this.testDriver.elements.Min();
-            // act
             int actualMinimum = this.bst.findMinimum();
-            // assert
             Assert.AreEqual(expectedMinimum, actualMinimum);
         }
 
@@ -81,15 +76,12 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void findMaximumTest()
         {
-            // arrange
             foreach(int value in this.testDriver.elements)
             {
                 this.bst.insert(value);
             }
             int expectedMaximum = this.testDriver.elements.Max();
-            // act
             int actualMaximum = this.bst.findMaximum();
-            // assert
             Assert.AreEqual(expectedMaximum, actualMaximum);
         }
 
@@ -99,15 +91,12 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void traverseTest()
         {
-            // arrange
             foreach(int value in this.testDriver.elements)
             {
                 this.bst.insert(value);
             }
             int expectedTraversalSize = this.testDriver.elements.Length + 1; // account for random element generated as root of tree during construction
-            // act
             int[] traversalOrder = this.bst.traverse();
-            // assert
             Assert.AreEqual(expectedTraversalSize, traversalOrder.Length);
             foreach(int value in this.testDriver.elements)
             {
@@ -121,9 +110,7 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void insertTest()
         {
-            // arrange
             int expectedSize = bst.getSize();
-            // act / assert
             foreach(int value in testDriver.elements)
             {
                 bst.insert(value);
@@ -139,13 +126,11 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void deleteTest()
         {
-            // arrange
             foreach(int value in this.testDriver.elements)
             {
                 bst.insert(value);
             }
             int expectedSize = bst.getSize();
-            // act / assert
             foreach(int value in this.testDriver.elements)
             {
                 Assert.IsTrue(bst.search(value));

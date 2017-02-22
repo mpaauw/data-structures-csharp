@@ -95,7 +95,6 @@ namespace Data_Structures_CSharp.Graph
                     this.adjacencyList[y].Add(x);
                     this.numEdges += 2;
                 }
-
             }
             else
             {
@@ -132,8 +131,7 @@ namespace Data_Structures_CSharp.Graph
                     if(child.state == GraphNode<T>.VisitState.Unvisited)
                     {
                         child.state = GraphNode<T>.VisitState.Visiting;
-                        queue.Enqueue(child);
-                        
+                        queue.Enqueue(child);                       
                     }
                 }
                 order = breadthFirstSearch(queue, order);

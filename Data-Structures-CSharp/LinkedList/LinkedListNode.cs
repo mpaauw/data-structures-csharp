@@ -25,5 +25,4 @@ namespace Data_Structures_CSharp.LinkedList
             this.next = null;
         }
     }
-
 }

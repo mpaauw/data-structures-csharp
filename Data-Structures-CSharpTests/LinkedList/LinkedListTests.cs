@@ -39,15 +39,12 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         [TestMethod]
         public void getSizeTest()
         {
-            // arrange
             foreach(int value in this.testDriver.elements)
             {
                 linkedList.insert(value);
             }
             int expectedSize = this.testDriver.elements.Length + 1;
-            // act
             int actualSize = linkedList.getSize();
-            // assert
             Assert.AreEqual(expectedSize, actualSize);
         }
 
@@ -57,9 +54,7 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         [TestMethod]
         public void insertTest()
         {
-            // arrange
             int expectedSize = linkedList.getSize();
-            // act / assert
             foreach(int value in testDriver.elements)
             {
                 linkedList.insert(value);
@@ -75,13 +70,11 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         [TestMethod]
         public void deleteTest()
         {
-            // arrange
             foreach(int value in this.testDriver.elements)
             {
                 linkedList.insert(value);
             }
             int expectedSize = linkedList.getSize();
-            // act / assert
             foreach(int value in this.testDriver.elements)
             {
                 Assert.IsTrue(linkedList.search(value));
@@ -98,7 +91,6 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         [TestMethod]
         public void searchTest()
         {
-            // arrange
             foreach (int value in this.testDriver.elements)
             {
                 linkedList.insert(value);
@@ -107,8 +99,7 @@ namespace Data_Structures_CSharp.LinkedList.Tests
             do
             {
                 nonExistentValue = this.testDriver.generateRandomElement();
-            } while (testDriver.elements.Contains(nonExistentValue));           
-            // act / assert
+            } while (testDriver.elements.Contains(nonExistentValue));
             Assert.IsFalse(linkedList.search(nonExistentValue));
             foreach (int value in this.testDriver.elements)
             {
