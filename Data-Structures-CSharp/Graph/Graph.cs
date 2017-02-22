@@ -126,10 +126,6 @@ namespace Data_Structures_CSharp.Graph
             while(queue.Count() > 0)
             {
                 GraphNode<T> node = queue.Dequeue();
-                if(node.state == GraphNode<T>.VisitState.Visited)
-                {
-                    return null; // loop encountered
-                }
                 order.Add(node);
                 foreach(GraphNode<T> child in this.adjacencyList[node])
                 {
@@ -162,10 +158,6 @@ namespace Data_Structures_CSharp.Graph
             while(stack.Count > 0)
             {
                 GraphNode<T> node = stack.Pop();
-                if(node.state == GraphNode<T>.VisitState.Visited)
-                {
-                    return null; // loop encountered
-                }
                 order.Add(node);
                 foreach(GraphNode<T> child in this.adjacencyList[node])
                 {
