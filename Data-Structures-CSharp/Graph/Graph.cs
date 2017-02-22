@@ -25,6 +25,15 @@ namespace Data_Structures_CSharp.Graph
             this.directed = d;
         }
 
+        public bool searchVertex(GraphNode<T> input)
+        {
+            if (this.adjacencyList.ContainsKey(input))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void insertVertex(GraphNode<T> input)
         {
             if (!adjacencyList.ContainsKey(input))
@@ -32,6 +41,18 @@ namespace Data_Structures_CSharp.Graph
                 adjacencyList.Add(input, new List<GraphNode<T>>());
                 numVertices++;
             }
+        }
+
+        public bool searchEdge(GraphNode<T> x, GraphNode<T> y)
+        {
+            if (adjacencyList.ContainsKey(x))
+            {
+                if (adjacencyList[x].Contains(y))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void insertEdge(GraphNode<T> x, GraphNode<T> y)
