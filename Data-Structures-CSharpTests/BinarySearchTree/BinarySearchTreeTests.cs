@@ -15,7 +15,7 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
     [TestClass]
     public class BinarySearchTreeTests
     {
-        private const int TEST_BREADTH = 200;
+        private const int TEST_BREADTH = 20;
 
         private const int TEST_DEPTH = 50000;
 

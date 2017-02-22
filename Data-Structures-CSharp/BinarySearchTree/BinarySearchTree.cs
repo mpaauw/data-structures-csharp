@@ -129,27 +129,26 @@ namespace Data_Structures_CSharp.BinarySearchTree
         /// <param name="input">Item to be passed and added to the tree; declared as an IComparable type in order to provide comparisons between the key values of other nodes within the tree.</param>
         public void insert(IComparable input)
         {
-            this.root = insert(input, this.root);
+            this.root = insert(input, this.root, null);
         }
-        private BinarySearchTreeNode<T> insert(IComparable input, BinarySearchTreeNode<T> node)
+        private BinarySearchTreeNode<T> insert(IComparable input, BinarySearchTreeNode<T> node, BinarySearchTreeNode<T> parent)
         {
-            if(node == null)
+            if (node == null)
             {
                 node = new BinarySearchTreeNode<T>((T)input);
+                node.parent = parent;
                 this.size++;
-                return node;
+            }
+            else if (input.CompareTo(node.data) < 0)
+            {
+                node.left = insert(input, node.left, node);
             }
             else
             {
-                if(input.CompareTo(node.data) < 0)
-                {
-                    return insert(input, node.left);
-                }
-                else
-                {
-                    return insert(input, node.right);
-                }
+                node.right = insert(input, node.right, node);
             }
+            //return balance(node);
+            return node;
         }
         
         /// <summary>
