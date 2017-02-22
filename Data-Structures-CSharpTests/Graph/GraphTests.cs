@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Data_Structures_CSharp.Graph.Tests
 {
+    /// <summary>
+    /// Unit test class that tests all methods of the Graph class.
+    /// </summary>
     [TestClass]
     public class GraphTests
     {
@@ -17,11 +20,18 @@ namespace Data_Structures_CSharp.Graph.Tests
         private int numEdges = 6;
         private Graph<char> graph;
 
+        /// <summary>
+        /// Defualt constructor.
+        /// Initializes all class-wide test-dependent members.
+        /// </summary>
         public GraphTests()
         {
             this.graph = new Graph<char>(true);
         }
 
+        /// <summary>
+        /// Tests if the Graph class is able to properly insert vertices into it's underlying data structure.
+        /// </summary>
         [TestMethod]
         public void insertVertexTest()
         {
@@ -37,6 +47,9 @@ namespace Data_Structures_CSharp.Graph.Tests
             }
         }
 
+        /// <summary>
+        /// Tests if the graph is able to properly insert edges into it's underlying data structure.
+        /// </summary>
         [TestMethod]
         public void insertEdgeTest()
         {
@@ -65,6 +78,9 @@ namespace Data_Structures_CSharp.Graph.Tests
             }
         }
 
+        /// <summary>
+        /// Tests if the graph is able to properly perform a Breadth First Search on it's underlying data structure.
+        /// </summary>
         [TestMethod]
         public void breadthFirstSearchTest()
         {
@@ -92,7 +108,6 @@ namespace Data_Structures_CSharp.Graph.Tests
             {
                 Assert.AreEqual(expectedOrder[i], actualOrder[i]);
             }
-
         }
     }
 }
