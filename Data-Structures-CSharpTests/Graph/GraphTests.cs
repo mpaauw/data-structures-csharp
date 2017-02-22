@@ -68,9 +68,31 @@ namespace Data_Structures_CSharp.Graph.Tests
         [TestMethod]
         public void breadthFirstSearchTest()
         {
-            this.insertEdgeTest();
-
+            GraphNode<char>[] nodes = new GraphNode<char>[this.vertices.Length];
+            int iter = 0;
+            foreach (char vertex in this.vertices)
+            {
+                GraphNode<char> newNode = new GraphNode<char>(vertex);
+                this.graph.insertVertex(newNode);
+                nodes[iter] = newNode;
+                iter++;
+            }
+            for (int i = 0; i < numEdges; i++)
+            {
+                int[] pair = new int[2];
+                for (int j = 0; j <= 1; j++)
+                {
+                    pair[j] = edgeIndices[i, j];
+                }
+                this.graph.insertEdge(nodes[pair[0]], nodes[pair[1]]);
+            }
+            GraphNode<char>[] expectedOrder = { nodes[0], nodes[1], nodes[4], nodes[3], nodes[5] }; 
             GraphNode<char>[] actualOrder = this.graph.breadthFirstSearch();
+            for(int i = 0; i < expectedOrder.Length; i++)
+            {
+                Assert.AreEqual(expectedOrder[i], actualOrder[i]);
+            }
+
         }
     }
 }
