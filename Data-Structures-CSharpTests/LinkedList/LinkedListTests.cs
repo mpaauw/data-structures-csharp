@@ -15,9 +15,9 @@ namespace Data_Structures_CSharp.LinkedList.Tests
     [TestClass]
     public class LinkedListTests
     {
-        private const int TEST_BREADTH = 200;
+        private const int TEST_BREADTH = 20;
 
-        private const int TEST_DEPTH = 50000;
+        private const int TEST_DEPTH = 100;
 
         private TestEngine testDriver;
 
@@ -105,6 +105,26 @@ namespace Data_Structures_CSharp.LinkedList.Tests
             {
                 Assert.IsTrue(linkedList.search(value));
             }
+        }
+
+        /// <summary>
+        /// Tests if the LinkedList class is able to correctly return a particular item at a given index:
+        /// </summary>
+        [TestMethod]
+        public void getElementAtTest()
+        {
+            foreach (int value in this.testDriver.elements)
+            {
+                linkedList.insert(value);
+            }
+            int expectedValueIndex;
+            do
+            {
+                expectedValueIndex = this.testDriver.generateRandomElement();
+            } while (expectedValueIndex < 0 | expectedValueIndex >= this.testDriver.elements.Length);
+            int expectedValue = this.testDriver.elements[expectedValueIndex];
+            int actualValue = this.linkedList.getElementAt((this.linkedList.getSize() - 2) - expectedValueIndex); // look at end of linked list, since elements are first added to front
+            Assert.AreEqual(expectedValue, actualValue);
         }
     }
 }
