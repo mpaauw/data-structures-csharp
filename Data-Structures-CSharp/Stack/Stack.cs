@@ -43,6 +43,7 @@ namespace Data_Structures_CSharp.Stack
         public void push(T input)
         {
             this.stack.insert(input);
+            this.size++;
         }
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace Data_Structures_CSharp.Stack
         {
             T head = this.stack.getElementAt(0);
             this.stack.delete(head);
+            this.size--;
             return head;
         }
 
