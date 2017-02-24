@@ -34,7 +34,7 @@ namespace Data_Structures_CSharp.Stack.Tests
         }
 
         /// <summary>
-        /// Tests if the Stack class is inserting items and incrementing it's size correctly.
+        /// Tests if the Stack class is inserting items correctly.
         /// </summary>
         [TestMethod]
         public void pushTest()
@@ -43,15 +43,32 @@ namespace Data_Structures_CSharp.Stack.Tests
             foreach(int value in this.testDriver.elements)
             {
                 this.stack.push(value);
-                expectedSize++;
                 int pushedValue = this.stack.pop();
-                Assert.AreEqual(value, pushedValue);
+                Assert.AreEqual(value, pushedValue);               
+            }
+        }
+
+        //Tests if the Stack class is properly incrementing/decrementing it's size;
+        [TestMethod]
+        public void getSizeTest()
+        {
+            int expectedSize = this.stack.getSize();
+            foreach(int value in this.testDriver.elements)
+            {
+                this.stack.push(value);
+                expectedSize++;
+                Assert.AreEqual(expectedSize, this.stack.getSize());
+            }
+            while (!this.stack.isEmpty())
+            {
+                this.stack.pop();
+                expectedSize--;
                 Assert.AreEqual(expectedSize, this.stack.getSize());
             }
         }
 
         /// <summary>
-        /// Tests if the Stack class is deleting items and decrementing it's size correctly.
+        /// Tests if the Stack class is deleting items correctly.
         /// </summary>
         [TestMethod]
         public void popTest()
@@ -60,13 +77,10 @@ namespace Data_Structures_CSharp.Stack.Tests
             {
                 this.stack.push(value);
             }
-            int expectedSize = this.stack.getSize();
             for(int i = this.testDriver.elements.Length - 1; i >= 0; i--)
             {
                 int poppedValue = this.stack.pop();
-                expectedSize--;
                 Assert.AreEqual(this.testDriver.elements[i], poppedValue);
-                Assert.AreEqual(expectedSize, this.stack.getSize());
             }
         }
 
