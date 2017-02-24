@@ -110,5 +110,21 @@ namespace Data_Structures_CSharp.LinkedList
                 return search(input, (LinkedListNode<T>)node.next);
             }
         }
+
+        public T getElementAt(int index)
+        {
+            int iter = 0;
+            LinkedListNode<T> temp = this.head;
+            while(temp != null)
+            {
+                if(iter == index)
+                {
+                    break;
+                }
+                iter++;
+                temp = temp.next;
+            }
+            return temp.data;
+        }
     }
 }
