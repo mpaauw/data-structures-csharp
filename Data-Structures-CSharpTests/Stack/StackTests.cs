@@ -33,19 +33,56 @@ namespace Data_Structures_CSharp.Stack.Tests
             stack = new Stack<int>(this.testDriver.generateRandomElement());
         }
 
+        /// <summary>
+        /// Tests if the Stack class is inserting items and incrementing it's size correctly.
+        /// </summary>
         [TestMethod]
         public void pushTest()
         {
+            int expectedSize = this.stack.getSize();
+            foreach(int value in this.testDriver.elements)
+            {
+                this.stack.push(value);
+                expectedSize++;
+                int pushedValue = this.stack.pop();
+                Assert.AreEqual(value, pushedValue);
+                Assert.AreEqual(expectedSize, this.stack.getSize());
+            }
         }
 
+        /// <summary>
+        /// Tests if the Stack class is deleting items and decrementing it's size correctly.
+        /// </summary>
         [TestMethod]
         public void popTest()
         {
+            foreach(int value in this.testDriver.elements)
+            {
+                this.stack.push(value);
+            }
+            int expectedSize = this.stack.getSize();
+            for(int i = this.testDriver.elements.Length - 1; i >= 0; i--)
+            {
+                int poppedValue = this.stack.pop();
+                expectedSize--;
+                Assert.AreEqual(this.testDriver.elements[i], poppedValue);
+                Assert.AreEqual(expectedSize, this.stack.getSize());
+            }
         }
 
+        /// <summary>
+        /// Tests whether or not the Stack class can properly determine if it's underlying data structure is empty.
+        /// </summary>
         [TestMethod]
         public void isEmptyTest()
         {
+            Assert.IsFalse(this.stack.isEmpty());
+            this.stack.pop();
+            Assert.IsTrue(this.stack.isEmpty());
+            this.stack.push(this.testDriver.generateRandomElement());
+            Assert.IsFalse(this.stack.isEmpty());
+            this.stack.pop();
+            Assert.IsTrue(this.stack.isEmpty());
         }
     }
 }
