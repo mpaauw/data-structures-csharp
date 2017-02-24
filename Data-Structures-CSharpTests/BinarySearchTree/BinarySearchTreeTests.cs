@@ -47,11 +47,11 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
             do
             {
                 nonExistentValue = this.testDriver.generateRandomElement();
-            } while (testDriver.elements.Contains(nonExistentValue));
+            } while (this.testDriver.elements.Contains(nonExistentValue));
             Assert.IsFalse(bst.search(nonExistentValue));
             foreach(int value in this.testDriver.elements)
             {
-                Assert.IsTrue(bst.search(value));
+                Assert.IsTrue(this.bst.search(value));
             }
         }
 
@@ -110,13 +110,13 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         [TestMethod]
         public void insertTest()
         {
-            int expectedSize = bst.getSize();
+            int expectedSize = this.bst.getSize();
             foreach(int value in testDriver.elements)
             {
-                bst.insert(value);
+                this.bst.insert(value);
                 expectedSize++;
-                Assert.IsTrue(bst.search(value));
-                Assert.AreEqual(expectedSize, bst.getSize());
+                Assert.IsTrue(this.bst.search(value));
+                Assert.AreEqual(expectedSize, this.bst.getSize());
             }
         }
 
@@ -128,16 +128,16 @@ namespace Data_Structures_CSharp.BinarySearchTree.Tests
         {
             foreach(int value in this.testDriver.elements)
             {
-                bst.insert(value);
+                this.bst.insert(value);
             }
-            int expectedSize = bst.getSize();
+            int expectedSize = this.bst.getSize();
             foreach(int value in this.testDriver.elements)
             {
-                Assert.IsTrue(bst.search(value));
-                bst.delete(value);
+                Assert.IsTrue(this.bst.search(value));
+                this.bst.delete(value);
                 expectedSize--;
-                Assert.IsFalse(bst.search(value));
-                Assert.AreEqual(expectedSize, bst.getSize());
+                Assert.IsFalse(this.bst.search(value));
+                Assert.AreEqual(expectedSize, this.bst.getSize());
             }
         }
     }
