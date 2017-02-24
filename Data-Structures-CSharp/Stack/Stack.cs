@@ -14,7 +14,7 @@ namespace Data_Structures_CSharp.Stack
     public class Stack<T>
     {
         private Data_Structures_CSharp.LinkedList.LinkedList<T> stack;
-        public int size { get; set; }
+        private int size;
 
         /// <summary>
         /// Default constructor.
@@ -25,6 +25,15 @@ namespace Data_Structures_CSharp.Stack
         {
             this.stack = new Data_Structures_CSharp.LinkedList.LinkedList<T>(input);
             this.size++;
+        }
+
+        /// <summary>
+        /// Returns the current size of the stack.
+        /// </summary>
+        /// <returns>Returns an int value representing the current size of the stack.</returns>
+        public int getSize()
+        {
+            return this.size;
         }
 
         /// <summary>
