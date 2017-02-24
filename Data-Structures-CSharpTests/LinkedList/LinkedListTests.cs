@@ -41,10 +41,10 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         {
             foreach(int value in this.testDriver.elements)
             {
-                linkedList.insert(value);
+                this.linkedList.insert(value);
             }
             int expectedSize = this.testDriver.elements.Length + 1;
-            int actualSize = linkedList.getSize();
+            int actualSize = this.linkedList.getSize();
             Assert.AreEqual(expectedSize, actualSize);
         }
 
@@ -54,13 +54,13 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         [TestMethod]
         public void insertTest()
         {
-            int expectedSize = linkedList.getSize();
+            int expectedSize = this.linkedList.getSize();
             foreach(int value in testDriver.elements)
             {
-                linkedList.insert(value);
+                this.linkedList.insert(value);
                 expectedSize++;
-                Assert.IsTrue(linkedList.search(value));
-                Assert.AreEqual(expectedSize, linkedList.getSize());             
+                Assert.IsTrue(this.linkedList.search(value));
+                Assert.AreEqual(expectedSize, this.linkedList.getSize());             
             }
         }
 
@@ -72,16 +72,16 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         {
             foreach(int value in this.testDriver.elements)
             {
-                linkedList.insert(value);
+                this.linkedList.insert(value);
             }
-            int expectedSize = linkedList.getSize();
+            int expectedSize = this.linkedList.getSize();
             foreach(int value in this.testDriver.elements)
             {
-                Assert.IsTrue(linkedList.search(value));
-                linkedList.delete(value);
+                Assert.IsTrue(this.linkedList.search(value));
+                this.linkedList.delete(value);
                 expectedSize--;
-                Assert.IsFalse(linkedList.search(value));
-                Assert.AreEqual(expectedSize, linkedList.getSize());
+                Assert.IsFalse(this.linkedList.search(value));
+                Assert.AreEqual(expectedSize, this.linkedList.getSize());
             }
         }
 
@@ -93,17 +93,17 @@ namespace Data_Structures_CSharp.LinkedList.Tests
         {
             foreach (int value in this.testDriver.elements)
             {
-                linkedList.insert(value);
+                this.linkedList.insert(value);
             }
             int nonExistentValue;
             do
             {
                 nonExistentValue = this.testDriver.generateRandomElement();
-            } while (testDriver.elements.Contains(nonExistentValue));
-            Assert.IsFalse(linkedList.search(nonExistentValue));
+            } while (this.testDriver.elements.Contains(nonExistentValue));
+            Assert.IsFalse(this.linkedList.search(nonExistentValue));
             foreach (int value in this.testDriver.elements)
             {
-                Assert.IsTrue(linkedList.search(value));
+                Assert.IsTrue(this.linkedList.search(value));
             }
         }
 
