@@ -111,6 +111,11 @@ namespace Data_Structures_CSharp.LinkedList
             }
         }
 
+        /// <summary>
+        /// Returns an element at a given index within the list.
+        /// </summary>
+        /// <param name="index">Index to search for element.</param>
+        /// <returns>Returns an element of underlying data type T.</returns>
         public T getElementAt(int index)
         {
             int iter = 0;
