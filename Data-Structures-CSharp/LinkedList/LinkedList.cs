@@ -49,6 +49,10 @@ namespace Data_Structures_CSharp.LinkedList
             this.size++;
         }
 
+        /// <summary>
+        /// Inserts a value into the end of the list, and increments the size of the list by 1.
+        /// </summary>
+        /// <param name="input"></param>
         public void insertEnd(T input)
         {
             LinkedListNode<T> newNode = new LinkedListNode<T>(input);
@@ -59,6 +63,7 @@ namespace Data_Structures_CSharp.LinkedList
             }
             this.head = newNode;
             this.head = temp;
+            this.size++;
         }
 
         /// <summary>
