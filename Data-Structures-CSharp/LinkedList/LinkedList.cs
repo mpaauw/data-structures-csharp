@@ -49,6 +49,18 @@ namespace Data_Structures_CSharp.LinkedList
             this.size++;
         }
 
+        public void insertEnd(T input)
+        {
+            LinkedListNode<T> newNode = new LinkedListNode<T>(input);
+            LinkedListNode<T> temp = this.head;
+            while(this.head != null)
+            {
+                this.head = this.head.next;
+            }
+            this.head = newNode;
+            this.head = temp;
+        }
+
         /// <summary>
         /// Deletes the first occurence of a value from the list, and decrements the size of the list by 1.
         /// </summary>
