@@ -20,7 +20,7 @@ namespace Data_Structures_CSharp.Stack
         /// Default constructor.
         /// Assigns initial value of stack to an input parameter, increments the size of the stack by 1.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">Initial value to assign to the head of the stack.</param>
         public Stack(T input)
         {
             this.stack = new Data_Structures_CSharp.LinkedList.LinkedList<T>(input);
