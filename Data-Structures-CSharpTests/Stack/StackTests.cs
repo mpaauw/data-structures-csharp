@@ -30,7 +30,7 @@ namespace Data_Structures_CSharp.Stack.Tests
         public StackTests()
         {
             this.testDriver = new TestEngine(TEST_BREADTH, TEST_DEPTH);
-            stack = new Stack<int>(this.testDriver.generateRandomElement());
+            this.stack = new Stack<int>(this.testDriver.generateRandomElement());
         }
 
         /// <summary>
