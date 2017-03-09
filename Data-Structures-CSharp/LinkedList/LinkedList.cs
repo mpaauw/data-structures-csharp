@@ -36,6 +36,11 @@ namespace Data_Structures_CSharp.LinkedList
             return this.size;
         }
 
+        public LinkedListNode<T> getHead()
+        {
+            return this.head;
+        }
+
         /// <summary>
         /// Inserts a value into the front of the list, and increments the size of the list by 1.
         /// The value is inserted into the front of the list in order to avoid costly traversal for each insertion.
@@ -46,23 +51,6 @@ namespace Data_Structures_CSharp.LinkedList
             LinkedListNode<T> newNode = new LinkedListNode<T>(input);
             newNode.next = this.head;
             this.head = newNode;
-            this.size++;
-        }
-
-        /// <summary>
-        /// Inserts a value into the end of the list, and increments the size of the list by 1.
-        /// </summary>
-        /// <param name="input"></param>
-        public void insertEnd(T input)
-        {
-            LinkedListNode<T> newNode = new LinkedListNode<T>(input);
-            LinkedListNode<T> temp = this.head;
-            while(this.head != null)
-            {
-                this.head = this.head.next;
-            }
-            this.head = newNode;
-            this.head = temp;
             this.size++;
         }
 

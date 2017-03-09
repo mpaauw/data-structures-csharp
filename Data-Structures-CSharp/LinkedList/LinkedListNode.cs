@@ -11,7 +11,7 @@ namespace Data_Structures_CSharp.LinkedList
     /// Class which represents a single node for a Linked List data structure.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class LinkedListNode<T> : Node<T>
+    public class LinkedListNode<T> : Node<T>
     {
         public LinkedListNode<T> next { get; set; }
 

@@ -15,9 +15,9 @@ namespace Data_Structures_CSharp.Queue.Tests
     [TestClass]
     public class QueueTests
     {
-        private const int TEST_BREADTH = 20;
+        private const int TEST_BREADTH = 200;
 
-        private const int TEST_DEPTH = 100;
+        private const int TEST_DEPTH = 1000;
 
         private TestEngine testDriver;
 
@@ -60,12 +60,21 @@ namespace Data_Structures_CSharp.Queue.Tests
         [TestMethod()]
         public void enqueueTest()
         {
-            int expectedSize = this.queue.getSize();
-            foreach(int value in this.testDriver.elements)
+            this.queue.dequeue();
+            foreach (int value in this.testDriver.elements)
             {
                 this.queue.enqueue(value);
                 int enqueuedValue = this.queue.dequeue();
                 Assert.AreEqual(value, enqueuedValue);
+            }
+            foreach (int value in this.testDriver.elements)
+            {
+                this.queue.enqueue(value);
+            }
+            foreach (int value in this.testDriver.elements)
+            {
+                int dequeuedValue = this.queue.dequeue();
+                Assert.AreEqual(value, dequeuedValue);
             }
         }
 
@@ -75,6 +84,7 @@ namespace Data_Structures_CSharp.Queue.Tests
         [TestMethod()]
         public void dequeueTest()
         {
+            this.queue.dequeue();
             foreach(int value in this.testDriver.elements)
             {
                 this.queue.enqueue(value);

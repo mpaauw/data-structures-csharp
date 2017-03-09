@@ -13,7 +13,10 @@ namespace Data_Structures_CSharp.Queue
     /// <typeparam name="T">Underlying data type represented within the class object.</typeparam>
     public class Queue<T>
     {
-        private Data_Structures_CSharp.LinkedList.LinkedList<T> queue;
+        private Data_Structures_CSharp.LinkedList.LinkedListNode<T> front;
+
+        private Data_Structures_CSharp.LinkedList.LinkedListNode<T> rear;
+
         private int size;
 
         /// <summary>
@@ -23,7 +26,8 @@ namespace Data_Structures_CSharp.Queue
         /// <param name="input">Initial value to assign to the head of the queue.</param>
         public Queue(T input)
         {
-            this.queue = new Data_Structures_CSharp.LinkedList.LinkedList<T>(input);
+            this.front = new Data_Structures_CSharp.LinkedList.LinkedListNode<T>(input);
+            this.rear = this.front;
             this.size++;
         }
 
@@ -42,7 +46,16 @@ namespace Data_Structures_CSharp.Queue
         /// <param name="input">Item to be passed and added to the queue.</param>
         public void enqueue(T input)
         {
-            this.queue.insertEnd(input);
+            Data_Structures_CSharp.LinkedList.LinkedListNode<T> newNode = new Data_Structures_CSharp.LinkedList.LinkedListNode<T>(input);
+            if(this.rear != null)
+            {
+                this.rear.next = newNode;
+            }
+            this.rear = newNode;
+            if(this.front == null)
+            {
+                this.front = rear;
+            }
             this.size++;
         }
 
@@ -52,10 +65,18 @@ namespace Data_Structures_CSharp.Queue
         /// <returns>Returns an element of underlying data type T representing the element at the top of the queue.</returns>
         public T dequeue()
         {
-            T head = this.queue.getElementAt(0);
-            this.queue.delete(head);
+            if(this.front == null)
+            {
+                throw new Exception();
+            }
+            T output = this.front.data;
+            this.front = this.front.next;
+            if(this.front == null)
+            {
+                this.rear = null;
+            }
             this.size--;
-            return head;
+            return output;
         }
 
         /// <summary>
