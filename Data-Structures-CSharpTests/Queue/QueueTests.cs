@@ -9,6 +9,9 @@ using Data_Structures_CSharp.Shared;
 
 namespace Data_Structures_CSharp.Queue.Tests
 {
+    /// <summary>
+    /// Unit test class that tests all methods of the Queue class.
+    /// </summary>
     [TestClass]
     public class QueueTests
     {
@@ -20,12 +23,19 @@ namespace Data_Structures_CSharp.Queue.Tests
 
         private Queue<int> queue;
 
+        /// <summary>
+        /// Default constructor.
+        /// Initializes all class-wide test-dependent members.
+        /// </summary>
         public QueueTests()
         {
             this.testDriver = new TestEngine(TEST_BREADTH, TEST_DEPTH);
             this.queue = new Queue<int>(this.testDriver.generateRandomElement());
         }
 
+        /// <summary>
+        /// Tests if the Queue class is properly incrementing/decrementing it's size.
+        /// </summary>
         [TestMethod]
         public void getSizeTest()
         {
@@ -44,6 +54,9 @@ namespace Data_Structures_CSharp.Queue.Tests
             }
         }
 
+        /// <summary>
+        /// Tests if the Queue class is inserting items correctly.
+        /// </summary>
         [TestMethod()]
         public void enqueueTest()
         {
@@ -56,6 +69,9 @@ namespace Data_Structures_CSharp.Queue.Tests
             }
         }
 
+        /// <summary>
+        /// Tests if the Queue class is deleting items correctly.
+        /// </summary>
         [TestMethod()]
         public void dequeueTest()
         {
@@ -70,6 +86,9 @@ namespace Data_Structures_CSharp.Queue.Tests
             }
         }
 
+        /// <summary>
+        /// Tests whether or not the Queue class can properly determine if it's underlying data structure is empty.
+        /// </summary>
         [TestMethod()]
         public void isEmptyTest()
         {

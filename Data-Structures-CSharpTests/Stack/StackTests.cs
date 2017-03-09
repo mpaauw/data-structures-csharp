@@ -48,7 +48,9 @@ namespace Data_Structures_CSharp.Stack.Tests
             }
         }
 
-        //Tests if the Stack class is properly incrementing/decrementing it's size;
+        /// <summary>
+        /// Tests if the Stack class is properly incrementing/decrementing it's size.
+        /// </summary>
         [TestMethod]
         public void getSizeTest()
         {
