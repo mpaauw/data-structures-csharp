@@ -29,21 +29,57 @@ namespace Data_Structures_CSharp.Queue.Tests
         [TestMethod]
         public void getSizeTest()
         {
+            int expectedSize = this.queue.getSize();
+            foreach(int value in this.testDriver.elements)
+            {
+                this.queue.enqueue(value);
+                expectedSize++;
+                Assert.AreEqual(expectedSize, this.queue.getSize());
+            }
+            while (!this.queue.isEmpty())
+            {
+                this.queue.dequeue();
+                expectedSize--;
+                Assert.AreEqual(expectedSize, this.queue.getSize());
+            }
         }
 
         [TestMethod()]
         public void enqueueTest()
         {
+            int expectedSize = this.queue.getSize();
+            foreach(int value in this.testDriver.elements)
+            {
+                this.queue.enqueue(value);
+                int enqueuedValue = this.queue.dequeue();
+                Assert.AreEqual(value, enqueuedValue);
+            }
         }
 
         [TestMethod()]
         public void dequeueTest()
         {
+            foreach(int value in this.testDriver.elements)
+            {
+                this.queue.enqueue(value);
+            }
+            foreach(int value in this.testDriver.elements)
+            {
+                int dequeuedValue = this.queue.dequeue();
+                Assert.AreEqual(value, dequeuedValue);
+            }
         }
 
         [TestMethod()]
         public void isEmptyTest()
         {
+            Assert.IsFalse(this.queue.isEmpty());
+            this.queue.dequeue();
+            Assert.IsTrue(this.queue.isEmpty());
+            this.queue.enqueue(this.testDriver.generateRandomElement());
+            Assert.IsFalse(this.queue.isEmpty());
+            this.queue.dequeue();
+            Assert.IsTrue(this.queue.isEmpty());
         }
     }
 }
