@@ -4,42 +4,47 @@ namespace LinkedList.SinglyLinkedList
 {
     public class SinglyLinkedList<T> : ISinglyLinkedList<T>
     {
-        private SinglyLinkedListNode<T> head;
-        private SinglyLinkedListNode<T> tail;
-        private int size = 0;
+        public SinglyLinkedListNode<T> Head { get; private set; }
+        public SinglyLinkedListNode<T> Tail { get; private set; }
+        public int Size { get; private set; }
+
+        public SinglyLinkedList()
+        {
+            this.Size = 0;
+        }
 
         public void InsertHead(T data)
         {
-            if(this.head is null)
+            if(this.Head is null)
             {
-                this.head = new SinglyLinkedListNode<T>(data);
-                this.tail = this.head;
-                this.size++;
+                this.Head = new SinglyLinkedListNode<T>(data);
+                this.Tail = this.Head;
+                this.Size++;
                 return;
             }
-            var newHead = new SinglyLinkedListNode<T>(data, this.head);
-            this.head = newHead;
-            this.size++;
+            var newHead = new SinglyLinkedListNode<T>(data, this.Head);
+            this.Head = newHead;
+            this.Size++;
         }
 
         public void InsertTail(T data)
         {
-            if (this.tail is null)
+            if (this.Tail is null)
             {
-                this.tail = new SinglyLinkedListNode<T>(data);
-                this.head = this.tail;
-                this.size++;
+                this.Tail = new SinglyLinkedListNode<T>(data);
+                this.Head = this.Tail;
+                this.Size++;
                 return;
             }
             var newTail = new SinglyLinkedListNode<T>(data);
-            this.tail.Next = newTail;
-            this.tail = newTail;
-            this.size++;
+            this.Tail.Next = newTail;
+            this.Tail = newTail;
+            this.Size++;
         }
 
         public void InsertAt(int index, T data)
         {
-            if(index > this.size || index <= 0)
+            if(index > this.Size || index <= 0)
             {
                 throw new IndexOutOfRangeException();
             }
@@ -47,11 +52,11 @@ namespace LinkedList.SinglyLinkedList
             {
                 this.InsertHead(data);
             }
-            else if(index == this.size)
+            else if(index == this.Size)
             {
                 this.InsertTail(data);
             }
-            var current = this.head;
+            var current = this.Head;
             for(int i = 0; i < index; i++)
             {
                 current = current.Next;
@@ -59,75 +64,75 @@ namespace LinkedList.SinglyLinkedList
             var oldNext = current.Next;
             var newNode = new SinglyLinkedListNode<T>(data, oldNext);
             current.Next = newNode;
-            this.head = current;
-            this.size++;
+            this.Head = current;
+            this.Size++;
         }
 
         public void DeleteHead()
         {
-            if(head is null)
+            if(Head is null)
             {
                 return;
             }
-            else if(this.size == 1)
+            else if(this.Size == 1)
             {
-                this.head = null;
-                this.tail = this.head;
-                this.size--;
+                this.Head = null;
+                this.Tail = this.Head;
+                this.Size--;
                 return;
             }
-            this.head = this.head.Next;
-            this.size--;
-            if (this.size <= 1)
+            this.Head = this.Head.Next;
+            this.Size--;
+            if (this.Size <= 1)
             {
-                this.tail = this.head;
+                this.Tail = this.Head;
             }
         }
 
         public void DeleteTail()
         {
-            if(tail is null)
+            if(Tail is null)
             {
                 return;
             }
-            else if(this.size == 1)
+            else if(this.Size == 1)
             {
-                this.tail = null;
-                this.head = tail;
-                this.size--;
+                this.Tail = null;
+                this.Head = Tail;
+                this.Size--;
                 return;
             }
-            var current = this.head;
+            var current = this.Head;
             do
             {
                 current = current.Next;
-            } while (!current.Next.Equals(this.tail));
-            this.tail = current;
-            this.size--;
+            } while (!current.Next.Equals(this.Tail));
+            this.Tail = current;
+            this.Size--;
         }
 
         public void Delete(T data)
         {
-            if(this.head.Data.Equals(data))
+            if(this.Head.Data.Equals(data))
             {
-                this.head = this.head.Next;
-                this.size--;
+                this.Head = this.Head.Next;
+                this.Size--;
                 return;
             }
-            var current = this.head;
+            var current = this.Head;
             do
             {
                 current = current.Next;
             } while (!current.Next.Data.Equals(data));
             current.Next = current.Next.Next;
-            this.head = current;
-            this.size--;
+            this.Head = current;
+            this.Size--;
         }
 
         public int Search(T data)
         {
-            var current = this.head;
-            for(int i = 1; i <= this.size; i++)
+            var current = this.Head;
+            for(int i = 1; i <= this.Size; i++)
             {
                 if(current.Data.Equals(data))
                 {
