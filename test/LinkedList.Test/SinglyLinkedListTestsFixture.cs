@@ -10,7 +10,7 @@ namespace LinkedList.Test
 {
     public class SinglyLinkedListTestsFixture
     {
-        private SinglyLinkedList<string> list;
+        public SinglyLinkedList<string> list { get; private set; }
         private List<string> data;
         private List<DataIndex> dataIndices;
 
@@ -24,9 +24,19 @@ namespace LinkedList.Test
             faker = new Faker();
         }
 
-        public SinglyLinkedListTestsFixture WithData()
+        public SinglyLinkedListTestsFixture WithData(string data = "")
         {
-            this.data.Add(this.faker.Hacker.Noun());
+            this.data.Add((data.Equals("") ? this.faker.Random.String() : data));
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture WithUniqueData(string data = "")
+        {
+            while(this.data.Contains(data))
+            {
+                data = this.faker.Random.String();
+            }
+            this.data.Add(data);
             return this;
         }
 
@@ -34,7 +44,7 @@ namespace LinkedList.Test
         {
             this.dataIndices.Add(new DataIndex()
             {
-                Data = (data.Equals("")) ? this.faker.Hacker.Noun() : data,
+                Data = (data.Equals("")) ? this.faker.Random.String() : data,
                 Index = (index == 0) ? this.faker.Random.Int(1, 10) : index
             });
             return this;
@@ -93,6 +103,24 @@ namespace LinkedList.Test
             return this;
         }
 
+        public SinglyLinkedListTestsFixture ExecuteDeleteTail()
+        {
+            this.list.DeleteTail();
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture ExecuteDelete(string data = "")
+        {
+            this.list.Delete(data);
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture ExecuteSearch(string data, out int result)
+        {
+            result = this.list.Search(data);
+            return this;
+        }
+
         public SinglyLinkedListTestsFixture AssertDataInsertedAtHeadSuccessfully()
         {
             var isValidOrdering = true;
@@ -148,6 +176,43 @@ namespace LinkedList.Test
                 }
             }
             Assert.True(isValidOrdering);
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture AssertDataDeletedAtHeadSuccessfully(SinglyLinkedListNode<string> oldHeadNode)
+        {
+            var isDeleted = true;
+            if(oldHeadNode.Equals(this.list.Head) || !oldHeadNode.Next.Equals(this.list.Head))
+            {
+                isDeleted = false;
+            }
+            Assert.True(isDeleted);
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture AssertDataDeletedAtTailSuccessfully(SinglyLinkedListNode<string> oldTailNode)
+        {
+            var isDeleted = true;
+            if (oldTailNode.Equals(this.list.Tail))
+            {
+                isDeleted = false;
+            }
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture AssertDataDeletedSuccessfully(SinglyLinkedListNode<string> node, int index)
+        {
+            var isDeleted = true;
+            var current = this.list.Head;
+            for(int i = 0; i < index; i++)
+            {
+                current = current.Next;
+            }
+            if(current.Equals(node))
+            {
+                isDeleted = false;
+            }
+            Assert.True(isDeleted);
             return this;
         }
 

@@ -6,6 +6,7 @@
 
         void InsertTail(T data);
 
+        // zero-based
         void InsertAt(int index, T data);
 
         void DeleteHead();
@@ -14,6 +15,7 @@
 
         void Delete(T data);
 
+        // zero-based
         int Search(T data);
     }
 }

@@ -116,33 +116,36 @@ namespace LinkedList.SinglyLinkedList
         {
             if(this.Head.Data.Equals(data))
             {
-                this.Head = this.Head.Next;
-                this.Size--;
+                this.DeleteHead();
                 return;
             }
-            var current = this.Head.Next;
+            var prev = this.Head;
+            var current = prev.Next;
+
             do
             {
-                if(current.Data.Equals(data))
+                if (current.Data.Equals(data))
                 {
-                    current.Next = current.Next.Next;
-                    this.Head = current;
+                    prev.Next = current.Next;
+                    current = prev;
                     this.Size--;
                     return;
                 }
+                prev = current;
                 current = current.Next;
-            } while (!current.Next.Data.Equals(data) || current != null-);
+            } while (current != null);
         }
 
         public int Search(T data)
         {
             var current = this.Head;
-            for(int i = 1; i <= this.Size; i++)
+            for(int i = 0; i < this.Size; i++)
             {
                 if(current.Data.Equals(data))
                 {
                     return i;
                 }
+                current = current.Next;
             }
             return -1;
         }
