@@ -60,6 +60,39 @@ namespace LinkedList.Test
             return this;
         }
 
+        public SinglyLinkedListTestsFixture ExecuteInsertHead()
+        {
+            foreach(var item in this.data)
+            {
+                this.list.InsertHead(item);
+            }
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture ExecuteInsertTail()
+        {
+            foreach(var item in this.data)
+            {
+                this.list.InsertTail(item);
+            }
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture ExecuteInsertAt()
+        {
+            foreach(var item in this.dataIndices)
+            {
+                this.list.InsertAt(item.Index, item.Data);
+            }
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture ExecuteDeleteHead()
+        {
+            this.list.DeleteHead();
+            return this;
+        }
+
         public SinglyLinkedListTestsFixture AssertDataInsertedAtHeadSuccessfully()
         {
             var isValidOrdering = true;
@@ -102,7 +135,7 @@ namespace LinkedList.Test
                 actualOrdering.Add(new DataIndex
                 {
                     Data = head.Data,
-                    Index = i
+                    Index = i - 1
                 });
                 head = head.Next;
             }
@@ -115,33 +148,6 @@ namespace LinkedList.Test
                 }
             }
             Assert.True(isValidOrdering);
-            return this;
-        }
-
-        public SinglyLinkedListTestsFixture ExecuteInsertHead()
-        {
-            foreach(var item in this.data)
-            {
-                this.list.InsertHead(item);
-            }
-            return this;
-        }
-
-        public SinglyLinkedListTestsFixture ExecuteInsertTail()
-        {
-            foreach(var item in this.data)
-            {
-                this.list.InsertTail(item);
-            }
-            return this;
-        }
-
-        public SinglyLinkedListTestsFixture ExecuteInsertAt()
-        {
-            foreach(var item in this.dataIndices)
-            {
-                this.list.InsertAt(item.Index, item.Data);
-            }
             return this;
         }
 

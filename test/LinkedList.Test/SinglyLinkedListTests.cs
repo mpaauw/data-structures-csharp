@@ -19,7 +19,7 @@ namespace LinkedList.Test
         }
 
         [Fact]
-        public void List_Should_Insert_Head_Successfully_When_Empty()
+        public void Should_Insert_Head_Successfully_When_Empty()
         {
             this.fixture
                 .WithData()
@@ -28,7 +28,7 @@ namespace LinkedList.Test
         }
 
         [Fact]
-        public void List_Should_Insert_Head_Successfully_When_Populated()
+        public void Should_Insert_Head_Successfully_When_Populated()
         {
             this.fixture
                 .WithDataPopulation(false)
@@ -37,7 +37,7 @@ namespace LinkedList.Test
         }
 
         [Fact]
-        public void List_Should_Insert_Tail_Successfully_When_Empty()
+        public void Should_Insert_Tail_Successfully_When_Empty()
         {
             this.fixture
                 .WithData()
@@ -46,7 +46,7 @@ namespace LinkedList.Test
         }
 
         [Fact]
-        public void List_Should_Throw_Exception_When_Inserting_At_Empty()
+        public void Should_Throw_Exception_When_Inserting_At_Empty()
         {
             Assert.Throws<IndexOutOfRangeException>(() => this.fixture
                .WithDataIndex()
@@ -54,7 +54,7 @@ namespace LinkedList.Test
         }
 
         [Fact]
-        public void List_Should_Throw_Exception_When_Inserting_At_Out_Of_Range()
+        public void Should_Throw_Exception_When_Inserting_At_Out_Of_Range()
         {
             Assert.Throws<IndexOutOfRangeException>(() => this.fixture
                 .WithDataPopulation(false, 5)
@@ -64,7 +64,7 @@ namespace LinkedList.Test
         }
 
         [Fact]
-        public void List_Should_Insert_At_Successfully_When_In_Range()
+        public void Should_Insert_At_Successfully_When_In_Range()
         {
             this.fixture
                 .WithDataPopulation(false, 10)

@@ -44,11 +44,11 @@ namespace LinkedList.SinglyLinkedList
 
         public void InsertAt(int index, T data)
         {
-            if(index > this.Size || index <= 0)
+            if(index > this.Size || index < 0)
             {
                 throw new IndexOutOfRangeException();
             }
-            else if(index == 1)
+            else if(index == 0)
             {
                 this.InsertHead(data);
                 return;
@@ -58,15 +58,14 @@ namespace LinkedList.SinglyLinkedList
                 this.InsertTail(data);
                 return;
             }
-            var current = this.Head;
-            for(int i = 0; i < index; i++)
+            var current = this.Head.Next;
+            for(int i = 1; i < index - 1; i++)
             {
                 current = current.Next;
             }
             var oldNext = current.Next;
             var newNode = new SinglyLinkedListNode<T>(data, oldNext);
             current.Next = newNode;
-            //this.Head = current;
             this.Size++;
         }
 
@@ -74,7 +73,7 @@ namespace LinkedList.SinglyLinkedList
         {
             if(Head is null)
             {
-                return;
+                throw new NullReferenceException();
             }
             else if(this.Size == 1)
             {
@@ -95,7 +94,7 @@ namespace LinkedList.SinglyLinkedList
         {
             if(Tail is null)
             {
-                return;
+                throw new NullReferenceException();
             }
             else if(this.Size == 1)
             {
@@ -121,14 +120,18 @@ namespace LinkedList.SinglyLinkedList
                 this.Size--;
                 return;
             }
-            var current = this.Head;
+            var current = this.Head.Next;
             do
             {
+                if(current.Data.Equals(data))
+                {
+                    current.Next = current.Next.Next;
+                    this.Head = current;
+                    this.Size--;
+                    return;
+                }
                 current = current.Next;
-            } while (!current.Next.Data.Equals(data));
-            current.Next = current.Next.Next;
-            this.Head = current;
-            this.Size--;
+            } while (!current.Next.Data.Equals(data) || current != null-);
         }
 
         public int Search(T data)
