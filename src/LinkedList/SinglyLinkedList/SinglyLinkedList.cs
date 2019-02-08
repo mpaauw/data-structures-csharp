@@ -13,6 +13,7 @@ namespace LinkedList.SinglyLinkedList
             this.Size = 0;
         }
 
+        /// <inheritdoc />
         public void InsertHead(T data)
         {
             if(this.Head is null)
@@ -27,6 +28,7 @@ namespace LinkedList.SinglyLinkedList
             this.Size++;
         }
 
+        /// <inheritdoc />
         public void InsertTail(T data)
         {
             if (this.Tail is null)
@@ -42,6 +44,7 @@ namespace LinkedList.SinglyLinkedList
             this.Size++;
         }
 
+        /// <inheritdoc />
         public void InsertAt(int index, T data)
         {
             if(index > this.Size || index < 0)
@@ -69,6 +72,7 @@ namespace LinkedList.SinglyLinkedList
             this.Size++;
         }
 
+        /// <inheritdoc />
         public void DeleteHead()
         {
             if(Head is null)
@@ -90,6 +94,7 @@ namespace LinkedList.SinglyLinkedList
             }
         }
 
+        /// <inheritdoc />
         public void DeleteTail()
         {
             if(Tail is null)
@@ -112,6 +117,7 @@ namespace LinkedList.SinglyLinkedList
             this.Size--;
         }
 
+        /// <inheritdoc />
         public void Delete(T data)
         {
             if(this.Head.Data.Equals(data))
@@ -136,6 +142,7 @@ namespace LinkedList.SinglyLinkedList
             } while (current != null);
         }
 
+        /// <inheritdoc />
         public int Search(T data)
         {
             var current = this.Head;
