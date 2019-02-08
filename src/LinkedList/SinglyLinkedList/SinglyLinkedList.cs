@@ -51,10 +51,12 @@ namespace LinkedList.SinglyLinkedList
             else if(index == 1)
             {
                 this.InsertHead(data);
+                return;
             }
             else if(index == this.Size)
             {
                 this.InsertTail(data);
+                return;
             }
             var current = this.Head;
             for(int i = 0; i < index; i++)
@@ -64,7 +66,7 @@ namespace LinkedList.SinglyLinkedList
             var oldNext = current.Next;
             var newNode = new SinglyLinkedListNode<T>(data, oldNext);
             current.Next = newNode;
-            this.Head = current;
+            //this.Head = current;
             this.Size++;
         }
 

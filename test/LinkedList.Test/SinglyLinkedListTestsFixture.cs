@@ -2,6 +2,7 @@
 using LinkedList.SinglyLinkedList;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -29,21 +30,32 @@ namespace LinkedList.Test
             return this;
         }
 
-        public SinglyLinkedListTestsFixture WithDataIndex()
+        public SinglyLinkedListTestsFixture WithDataIndex(int index = 0, string data = "")
         {
             this.dataIndices.Add(new DataIndex()
             {
-                Data = this.faker.Hacker.Noun(),
-                Index = this.faker.Random.Int(1, 10)
+                Data = (data.Equals("")) ? this.faker.Hacker.Noun() : data,
+                Index = (index == 0) ? this.faker.Random.Int(1, 10) : index
             });
             return this;
         }
 
-        public SinglyLinkedListTestsFixture WithPopulation()
+        public SinglyLinkedListTestsFixture WithDataPopulation(bool isDataIndex, int count = 0)
         {
-            for(int i = 0; i < this.faker.Random.Int(1, 10); i++)
+            if(count == 0)
             {
-                WithData();
+                count = this.faker.Random.Int(1, 10);
+            }
+            for(int i = 0; i < count; i++)
+            {
+                if(isDataIndex)
+                {
+                    WithDataIndex();
+                }
+                else
+                {
+                    WithData();
+                }
             }
             return this;
         }
@@ -75,6 +87,32 @@ namespace LinkedList.Test
                     isValidOrdering = false;
                 }
                 head = head.Next;
+            }
+            Assert.True(isValidOrdering);
+            return this;
+        }
+
+        public SinglyLinkedListTestsFixture AssertDataInsertedAtSuccessfully()
+        {
+            var isValidOrdering = true;
+            var head = this.list.Head;
+            var actualOrdering = new List<DataIndex>();
+            for(int i = 1; i <= this.list.Size; i++)
+            {
+                actualOrdering.Add(new DataIndex
+                {
+                    Data = head.Data,
+                    Index = i
+                });
+                head = head.Next;
+            }
+            foreach(var item in dataIndices)
+            {
+                var validItemPresent = actualOrdering.Any(x => x.Data.Equals(item.Data) && x.Index == item.Index);
+                if(!validItemPresent)
+                {
+                    isValidOrdering = false;
+                }
             }
             Assert.True(isValidOrdering);
             return this;

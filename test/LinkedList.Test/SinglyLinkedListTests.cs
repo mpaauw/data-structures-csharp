@@ -21,7 +21,7 @@ namespace LinkedList.Test
         [Fact]
         public void List_Should_Insert_Head_Successfully_When_Empty()
         {
-            fixture
+            this.fixture
                 .WithData()
                 .ExecuteInsertHead()
                 .AssertDataInsertedAtHeadSuccessfully();
@@ -30,8 +30,8 @@ namespace LinkedList.Test
         [Fact]
         public void List_Should_Insert_Head_Successfully_When_Populated()
         {
-            fixture
-                .WithPopulation()
+            this.fixture
+                .WithDataPopulation(false)
                 .ExecuteInsertHead()
                 .AssertDataInsertedAtHeadSuccessfully();
         }
@@ -39,7 +39,7 @@ namespace LinkedList.Test
         [Fact]
         public void List_Should_Insert_Tail_Successfully_When_Empty()
         {
-            fixture
+            this.fixture
                 .WithData()
                 .ExecuteInsertTail()
                 .AssertDataInsertedAtTailSuccessfully();
@@ -48,9 +48,30 @@ namespace LinkedList.Test
         [Fact]
         public void List_Should_Throw_Exception_When_Inserting_At_Empty()
         {
-            Assert.Throws<IndexOutOfRangeException>(() => fixture
+            Assert.Throws<IndexOutOfRangeException>(() => this.fixture
                .WithDataIndex()
                .ExecuteInsertAt());
+        }
+
+        [Fact]
+        public void List_Should_Throw_Exception_When_Inserting_At_Out_Of_Range()
+        {
+            Assert.Throws<IndexOutOfRangeException>(() => this.fixture
+                .WithDataPopulation(false, 5)
+                .ExecuteInsertHead()
+                .WithDataIndex(10)
+                .ExecuteInsertAt());
+        }
+
+        [Fact]
+        public void List_Should_Insert_At_Successfully_When_In_Range()
+        {
+            this.fixture
+                .WithDataPopulation(false, 10)
+                .ExecuteInsertHead()
+                .WithDataIndex(5)
+                .ExecuteInsertAt()
+                .AssertDataInsertedAtSuccessfully();
         }
 
     }
