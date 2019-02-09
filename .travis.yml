@@ -1,0 +1,13 @@
+notifications:
+  email: false
+
+language: csharp
+mono: none
+dotnet: 2.1
+
+install:
+  - dotnet restore
+
+script:
+  - dotnet build
+  - dotnet test ./test/LinkedList.Test/
