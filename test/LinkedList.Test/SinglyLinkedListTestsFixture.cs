@@ -182,7 +182,7 @@ namespace LinkedList.Test
         public SinglyLinkedListTestsFixture AssertDataDeletedAtHeadSuccessfully(SinglyLinkedListNode<string> oldHeadNode)
         {
             var isDeleted = true;
-            if(oldHeadNode.Equals(this.list.Head) || !oldHeadNode.Next.Equals(this.list.Head))
+            if(oldHeadNode != null && (oldHeadNode.Equals(this.list.Head) || !oldHeadNode.Next.Equals(this.list.Head)))
             {
                 isDeleted = false;
             }
