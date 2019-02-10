@@ -111,8 +111,12 @@ namespace LinkedList.SinglyLinkedList
             var current = this.Head;
             do
             {
+                if(current is null)
+                {
+                    break;
+                }
                 current = current.Next;
-            } while (!current.Next.Equals(this.Tail));
+            } while (current.Next != null && !current.Next.Equals(this.Tail));
             this.Tail = current;
             this.Size--;
         }
