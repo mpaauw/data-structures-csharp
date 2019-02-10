@@ -1,8 +1,0 @@
-C:\Users\Matt\Documents\GitRepositories\Data-Structures-CSharp\Data-Structures-CSharpTests\bin\Debug\Data-Structures-CSharpTests.dll
-C:\Users\Matt\Documents\GitRepositories\Data-Structures-CSharp\Data-Structures-CSharpTests\bin\Debug\Data-Structures-CSharpTests.pdb
-C:\Users\Matt\Documents\GitRepositories\Data-Structures-CSharp\Data-Structures-CSharpTests\bin\Debug\Data-Structures-CSharp.exe
-C:\Users\Matt\Documents\GitRepositories\Data-Structures-CSharp\Data-Structures-CSharpTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\Users\Matt\Documents\GitRepositories\Data-Structures-CSharp\Data-Structures-CSharpTests\bin\Debug\Data-Structures-CSharp.pdb
-C:\Users\Matt\Documents\GitRepositories\Data-Structures-CSharp\Data-Structures-CSharpTests\obj\Debug\Data-Structures-CSharpTests.csprojResolveAssemblyReference.cache
-C:\Users\Matt\Documents\GitRepositories\Data-Structures-CSharp\Data-Structures-CSharpTests\obj\Debug\Data-Structures-CSharpTests.dll
-C:\Users\Matt\Documents\GitRepositories\Data-Structures-CSharp\Data-Structures-CSharpTests\obj\Debug\Data-Structures-CSharpTests.pdb

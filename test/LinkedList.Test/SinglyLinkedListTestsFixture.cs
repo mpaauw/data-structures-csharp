@@ -197,6 +197,7 @@ namespace LinkedList.Test
             {
                 isDeleted = false;
             }
+            Assert.True(isDeleted);
             return this;
         }
 
