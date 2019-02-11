@@ -1,12 +1,10 @@
 ﻿using Bogus;
-using LinkedList.SinglyLinkedList;
-using System;
+using DataStructures.Core.LinkedList.SinglyLinkedList;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
-namespace LinkedList.Test
+namespace DataStructures.Core.LinkedList.Test
 {
     public class SinglyLinkedListTestsFixture
     {

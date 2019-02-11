@@ -1,9 +1,8 @@
 using Bogus;
-using LinkedList.SinglyLinkedList;
 using System;
 using Xunit;
 
-namespace LinkedList.Test
+namespace DataStructures.Core.LinkedList.Test
 {
     public class SinglyLinkedListTests
     {

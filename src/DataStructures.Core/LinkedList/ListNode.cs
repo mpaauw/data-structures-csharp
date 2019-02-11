@@ -1,4 +1,4 @@
-﻿namespace LinkedList
+﻿namespace DataStructures.Core.LinkedList
 {
     public class ListNode<T>
     {

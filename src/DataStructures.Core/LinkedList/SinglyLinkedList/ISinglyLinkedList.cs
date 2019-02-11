@@ -1,4 +1,4 @@
-﻿namespace LinkedList.SinglyLinkedList
+﻿namespace DataStructures.Core.LinkedList.SinglyLinkedList
 {
     public interface ISinglyLinkedList<T>
     {

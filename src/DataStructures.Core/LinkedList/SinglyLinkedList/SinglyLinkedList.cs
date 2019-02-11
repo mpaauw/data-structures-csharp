@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LinkedList.SinglyLinkedList
+namespace DataStructures.Core.LinkedList.SinglyLinkedList
 {
     public class SinglyLinkedList<T> : ISinglyLinkedList<T>
     {
