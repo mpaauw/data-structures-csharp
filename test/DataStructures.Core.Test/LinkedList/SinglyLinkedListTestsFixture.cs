@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace DataStructures.Core.LinkedList.Test
+namespace DataStructures.Core.Test.LinkedList
 {
     public class SinglyLinkedListTestsFixture
     {

@@ -2,7 +2,7 @@ using Bogus;
 using System;
 using Xunit;
 
-namespace DataStructures.Core.LinkedList.Test
+namespace DataStructures.Core.Test.LinkedList
 {
     public class SinglyLinkedListTests
     {
