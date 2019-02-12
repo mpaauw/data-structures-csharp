@@ -1,100 +1,77 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DataStructures.Api.Common;
+using DataStructures.Api.LinkedList.SinglyLinkedList.Commands;
+using DataStructures.Core.LinkedList.SinglyLinkedList;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DataStructures.Api.LinkedList.Controllers
 {
     [Route("api/[controller]")]
     public class SinglyLinkedListController : Controller
     {
-        /// <summary>
-        /// Create a new singly linked list
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
         [HttpPost("Create")]
-        public HttpResponse Create(Type type)
+        public async Task<Result<string>> Create()
         {
-            throw new NotImplementedException();
+            var command = new CreateCommand<dynamic>();
+            return await command.ExecuteAsync();
         }
 
-        /// <summary>
-        /// Retrieve a singly linked list head node, given it's key
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
         [HttpGet("Retrieve/{key}")]
-        public HttpResponse Retrieve([FromRoute] string key)
+        public async Task<Result<SinglyLinkedList<dynamic>>> Retrieve([FromRoute] string key)
         {
-            throw new NotImplementedException();
+            var command = new RetrieveCommand<dynamic>(key);
+            return await command.ExecuteAsync();
         }
 
-        /// <summary>
-        /// Removes a singly linked list, given it's key.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        [HttpPut("Update/{key}")]
+        public async Task<Result<string>> Update(
+            [FromRoute] string key,
+            [FromBody] SinglyLinkedList<dynamic> list)
+        {
+            var command = new UpdateCommand<dynamic>(key, list);
+            return await command.ExecuteAsync();
+        }
+
         [HttpDelete("Remove/{key}")]
-        public HttpResponse Remove([FromRoute] string key)
+        public async Task<Result<string>> Remove([FromRoute] string key)
         {
-            throw new NotImplementedException();
+            var command = new RemoveCommand(key);
+            return await command.ExecuteAsync();
         }
 
-        /// <summary>
-        /// Searches a given linked list for a supplied value
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="type"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
         [HttpPost("Search/{key}")]
-        public HttpResponse Search(
+        public async Task<Result<int>> Search(
             [FromRoute] string key,
-            [FromBody] Type type,
-            [FromBody] object data)
+            [FromBody] dynamic data)
         {
-            throw new NotImplementedException();
+            var command = new SearchCommand<dynamic>(key, data);
+            return await command.ExecuteAsync();
         }
 
-        /// <summary>
-        /// Inserts a new value into a given list, several options
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="type"></param>
-        /// <param name="data"></param>
-        /// <param name="insertAtHead"></param>
-        /// <param name="index"></param>
-        /// <returns></returns>
         [HttpPost("Insert/{key}")]
-        public HttpResponse Insert(
+        public async Task<Result<bool>> Insert(
             [FromRoute] string key,
-            [FromBody] Type type,
-            [FromBody] object data,
+            [FromBody] dynamic data,
             [FromBody] bool insertAtHead = false,
             [FromBody] int index = -1)
         {
-            throw new NotImplementedException();
+            var command = new InsertCommand<dynamic>(key, data, insertAtHead, index);
+            return await command.ExecuteAsync();
         }
 
-        /// <summary>
-        /// Deletes a value from a given list, several options
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="type"></param>
-        /// <param name="deleteFromHead"></param>
-        /// <param name="data"></param>
-        /// <returns></returns>
         [HttpDelete("Delete/{key}")]
-        public HttpResponse Delete(
+        public async Task<Result<bool>> Delete(
             [FromRoute] string key,
-            [FromBody] Type type,
-            [FromBody] bool deleteFromHead = false,
-            [FromBody] object data = null)
+            [FromBody] dynamic data = null,
+            [FromBody] bool deleteFromHead = false)
         {
-            throw new NotImplementedException();
+            var command = new DeleteCommand<dynamic>(key, data, deleteFromHead);
+            return await command.ExecuteAsync();
         }
 
     }
