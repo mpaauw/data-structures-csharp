@@ -10,4 +10,4 @@ install:
 
 script:
   - dotnet build
-  - dotnet test ./test/LinkedList.Test/
+  - dotnet test ./test/DataStructures.Core.Test/
