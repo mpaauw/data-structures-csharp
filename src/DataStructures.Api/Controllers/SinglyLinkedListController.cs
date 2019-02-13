@@ -1,5 +1,5 @@
 ﻿using DataStructures.Api.Common;
-using DataStructures.Api.LinkedList.SinglyLinkedList.Commands;
+using DataStructures.Api.Commands.SinglyLinkedList;
 using DataStructures.Core.LinkedList.SinglyLinkedList;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,18 +10,27 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace DataStructures.Api.LinkedList.Controllers
+
+namespace DataStructures.Api.Controllers
 {
     [Route("api/[controller]")]
     public class SinglyLinkedListController : Controller
     {
         [HttpPost("Create")]
-        public async Task<Result<string>> Create(string serializedInput, Type type)
+        public async Task<Result<string>> Create(
+            [FromBody] string serializedInput)
         {
-            var list = JsonConvert.DeserializeObject(serializedInput, type);
+            //var list = JsonConvert.DeserializeObject(serializedInput, type);
 
-            var command = new CreateCommand<object>(list);
+            var list = JsonConvert.DeserializeObject(serializedInput, typeof(SinglyLinkedList<object>));
+
+            var command = new CreateCommand<object>()
+            {
+                List = list
+            };
+
             return await command.ExecuteAsync();
         }
 

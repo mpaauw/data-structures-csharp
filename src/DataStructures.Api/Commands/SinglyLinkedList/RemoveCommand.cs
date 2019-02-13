@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
+namespace DataStructures.Api.Commands.SinglyLinkedList
 {
     public class RemoveCommand : Command<Result<string>>
     {

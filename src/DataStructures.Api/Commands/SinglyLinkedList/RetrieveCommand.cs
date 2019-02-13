@@ -8,37 +8,35 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
+namespace DataStructures.Api.Commands.SinglyLinkedList
 {
-    public class UpdateCommand<T> : Command<Result<string>>
+    public class RetrieveCommand<T> : Command<Result<SinglyLinkedList<T>>>
     {
         private readonly string key;
-        private readonly ISinglyLinkedList<T> list;
         private readonly ConnectionMultiplexer redis;
 
-        public UpdateCommand(string key, ISinglyLinkedList<T> list)
+        public RetrieveCommand(string key)
         {
             this.key = key;
-            this.list = list;
             this.redis = ConnectionMultiplexer.Connect(Constants.RedisConfig);
         }
 
-        public override async Task<Result<string>> ExecuteAsync()
+        public override async Task<Result<SinglyLinkedList<T>>> ExecuteAsync()
         {
             try
             {
                 var database = this.redis.GetDatabase();
-                var response = await database.StringSetAsync(this.key, JsonConvert.SerializeObject(this.list));
-                return new Result<string>(
-                    (response) ? this.key : null,
-                    (response) ? StatusCodes.Status201Created : StatusCodes.Status400BadRequest,
-                    (response) ? false : true,
-                    (response) ? null : Constants.UnableToSetErrorMessage
+                var response = await database.StringGetAsync(this.key);
+                return new Result<SinglyLinkedList<T>>(
+                    (!response.Equals(RedisValue.Null)) ? JsonConvert.DeserializeObject<SinglyLinkedList<T>>(response) : null,
+                    (!response.Equals(RedisValue.Null)) ? StatusCodes.Status200OK : StatusCodes.Status404NotFound,
+                    (!response.Equals(RedisValue.Null)) ? false : true,
+                    (!response.Equals(RedisValue.Null)) ? null : Constants.KeyNotFoundErrorMessage
                 );
             }
             catch(Exception ex)
             {
-                return new Result<string>(
+                return new Result<SinglyLinkedList<T>>(
                     null,
                     StatusCodes.Status500InternalServerError,
                     true,

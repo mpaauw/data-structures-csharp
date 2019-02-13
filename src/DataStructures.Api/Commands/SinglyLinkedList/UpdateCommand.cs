@@ -1,22 +1,24 @@
 ﻿using DataStructures.Api.Common;
+using DataStructures.Core.LinkedList.SinglyLinkedList;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using StackExchange.Redis;
-using DataStructures.Core.LinkedList.SinglyLinkedList;
-using Newtonsoft.Json;
 
-namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
+namespace DataStructures.Api.Commands.SinglyLinkedList
 {
-    public class CreateCommand<T> : Command<Result<string>>
+    public class UpdateCommand<T> : Command<Result<string>>
     {
-        private readonly object list;
+        private readonly string key;
+        private readonly ISinglyLinkedList<T> list;
         private readonly ConnectionMultiplexer redis;
 
-        public CreateCommand(object list)
+        public UpdateCommand(string key, ISinglyLinkedList<T> list)
         {
+            this.key = key;
             this.list = list;
             this.redis = ConnectionMultiplexer.Connect(Constants.RedisConfig);
         }
@@ -26,10 +28,9 @@ namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
             try
             {
                 var database = this.redis.GetDatabase();
-                var key = new Guid().ToString();
-                var response = await database.StringSetAsync(key, JsonConvert.SerializeObject(this.list));
+                var response = await database.StringSetAsync(this.key, JsonConvert.SerializeObject(this.list));
                 return new Result<string>(
-                    (response) ? key.ToString() : null,
+                    (response) ? this.key : null,
                     (response) ? StatusCodes.Status201Created : StatusCodes.Status400BadRequest,
                     (response) ? false : true,
                     (response) ? null : Constants.UnableToSetErrorMessage

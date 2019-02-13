@@ -1,5 +1,6 @@
-﻿using DataStructures.Api.LinkedList.Controllers;
-using DataStructures.Core.LinkedList.SinglyLinkedList;
+﻿using DataStructures.Core.LinkedList.SinglyLinkedList;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
@@ -10,12 +11,28 @@ namespace DataStructures.Api
     {
         static void Main(string[] args)
         {
-            SinglyLinkedListController controller = new SinglyLinkedListController();
+            CreateWebHostBuilder(args).Build().Run();
 
-            var list = new SinglyLinkedList<TestThingy>();
+            //SinglyLinkedListController controller = new SinglyLinkedListController();
 
-            var result = controller.Create(JsonConvert.SerializeObject(list), list.GetType()).Result;
+            //var list = new SinglyLinkedList<TestThingy>();
+
+            //var createResult = controller.Create(JsonConvert.SerializeObject(list), list.GetType()).Result;
+
+            //// ==========================================================================
+
+            //var key = createResult.Data;
+            //var data = new TestThingy()
+            //{
+            //    ImportantInteger = 9000,
+            //    Killswitch = true
+            //};
+            //var insertResult = controller.Insert(key, data);
         }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>();
 
         public class TestThingy
         {
