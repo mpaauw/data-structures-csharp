@@ -15,7 +15,6 @@ namespace DataStructures.Api
             var list = new SinglyLinkedList<TestThingy>();
 
             var result = controller.Create(JsonConvert.SerializeObject(list), list.GetType()).Result;
-
         }
 
         public class TestThingy

@@ -16,7 +16,7 @@ namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
         public RemoveCommand(string key)
         {
             this.key = key;
-            this.redis = ConnectionMultiplexer.Connect(Constants.RedisHost);
+            this.redis = ConnectionMultiplexer.Connect(Constants.RedisConfig);
         }
 
         public override async Task<Result<string>> ExecuteAsync()

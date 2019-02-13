@@ -22,7 +22,7 @@ namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
             this.data = data;
             this.insertAtHead = insertAtHead;
             this.index = index;
-            this.redis = ConnectionMultiplexer.Connect(Constants.RedisHost);
+            this.redis = ConnectionMultiplexer.Connect(Constants.RedisConfig);
         }
 
         public override async Task<Result<bool>> ExecuteAsync()

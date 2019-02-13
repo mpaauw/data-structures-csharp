@@ -20,7 +20,7 @@ namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
         {
             this.key = key;
             this.list = list;
-            this.redis = ConnectionMultiplexer.Connect(Constants.RedisHost);
+            this.redis = ConnectionMultiplexer.Connect(Constants.RedisConfig);
         }
 
         public override async Task<Result<string>> ExecuteAsync()

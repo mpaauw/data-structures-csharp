@@ -18,7 +18,7 @@ namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
         public CreateCommand(object list)
         {
             this.list = list;
-            this.redis = ConnectionMultiplexer.Connect(Constants.RedisHost);
+            this.redis = ConnectionMultiplexer.Connect(Constants.RedisConfig);
         }
 
         public override async Task<Result<string>> ExecuteAsync()
