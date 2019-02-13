@@ -12,10 +12,12 @@ namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
 {
     public class CreateCommand<T> : Command<Result<string>>
     {
+        private readonly object list;
         private readonly ConnectionMultiplexer redis;
 
-        public CreateCommand()
+        public CreateCommand(object list)
         {
+            this.list = list;
             this.redis = ConnectionMultiplexer.Connect(Constants.RedisHost);
         }
 
@@ -25,7 +27,7 @@ namespace DataStructures.Api.LinkedList.SinglyLinkedList.Commands
             {
                 var database = this.redis.GetDatabase();
                 var key = new Guid().ToString();
-                var response = await database.StringSetAsync(key, JsonConvert.SerializeObject(new SinglyLinkedList<T>()));
+                var response = await database.StringSetAsync(key, JsonConvert.SerializeObject(this.list));
                 return new Result<string>(
                     (response) ? key.ToString() : null,
                     (response) ? StatusCodes.Status201Created : StatusCodes.Status400BadRequest,

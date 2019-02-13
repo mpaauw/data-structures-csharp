@@ -1,4 +1,8 @@
-﻿using System;
+﻿using DataStructures.Api.LinkedList.Controllers;
+using DataStructures.Core.LinkedList.SinglyLinkedList;
+using Newtonsoft.Json;
+using System;
+using System.Threading.Tasks;
 
 namespace DataStructures.Api
 {
@@ -6,7 +10,21 @@ namespace DataStructures.Api
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            SinglyLinkedListController controller = new SinglyLinkedListController();
+
+            var list = new SinglyLinkedList<TestThingy>();
+
+            var result = controller.Create(JsonConvert.SerializeObject(list), list.GetType()).Result;
+
+        }
+
+        public class TestThingy
+        {
+            public const string Floob = "Immutable";
+
+            public int ImportantInteger { get; set; }
+
+            public bool Killswitch { get; set; }
         }
     }
 }

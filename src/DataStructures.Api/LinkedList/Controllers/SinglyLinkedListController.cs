@@ -3,6 +3,8 @@ using DataStructures.Api.LinkedList.SinglyLinkedList.Commands;
 using DataStructures.Core.LinkedList.SinglyLinkedList;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -15,9 +17,11 @@ namespace DataStructures.Api.LinkedList.Controllers
     public class SinglyLinkedListController : Controller
     {
         [HttpPost("Create")]
-        public async Task<Result<string>> Create()
+        public async Task<Result<string>> Create(string serializedInput, Type type)
         {
-            var command = new CreateCommand<dynamic>();
+            var list = JsonConvert.DeserializeObject(serializedInput, type);
+
+            var command = new CreateCommand<object>(list);
             return await command.ExecuteAsync();
         }
 
