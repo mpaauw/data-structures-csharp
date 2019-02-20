@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataStructures.Api.Commands.SinglyLinkedList
 {
-    public class InsertCommand<T> : Command<Result<bool>>
+    public class InsertCommand<T>
     {
         private readonly string key;
         private readonly T data;
@@ -25,7 +25,7 @@ namespace DataStructures.Api.Commands.SinglyLinkedList
             this.redis = ConnectionMultiplexer.Connect(Constants.RedisConfig);
         }
 
-        public override async Task<Result<bool>> ExecuteAsync()
+        public async Task<Result<bool>> ExecuteAsync()
         {
             try
             {

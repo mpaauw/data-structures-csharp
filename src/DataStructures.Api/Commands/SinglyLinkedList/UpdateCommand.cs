@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataStructures.Api.Commands.SinglyLinkedList
 {
-    public class UpdateCommand<T> : Command<Result<string>>
+    public class UpdateCommand<T>
     {
         private readonly string key;
         private readonly ISinglyLinkedList<T> list;
@@ -23,7 +23,7 @@ namespace DataStructures.Api.Commands.SinglyLinkedList
             this.redis = ConnectionMultiplexer.Connect(Constants.RedisConfig);
         }
 
-        public override async Task<Result<string>> ExecuteAsync()
+        public async Task<Result<string>> ExecuteAsync()
         {
             try
             {

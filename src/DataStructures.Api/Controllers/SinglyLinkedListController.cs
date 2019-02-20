@@ -19,14 +19,14 @@ namespace DataStructures.Api.Controllers
     public class SinglyLinkedListController : Controller
     {
         [HttpPost("Create")]
-        public async Task<Result<string>> Create(
-            [FromBody] string serializedInput)
+        public async Task<Result<string>> Create([FromBody] SinglyLinkedList<string> list = null)
         {
-            //var list = JsonConvert.DeserializeObject(serializedInput, type);
+            if(list is null)
+            {
+                list = new SinglyLinkedList<string>();
+            }
 
-            var list = JsonConvert.DeserializeObject(serializedInput, typeof(SinglyLinkedList<object>));
-
-            var command = new CreateCommand<object>()
+            var command = new CreateCommand()
             {
                 List = list
             };
@@ -85,6 +85,13 @@ namespace DataStructures.Api.Controllers
         {
             var command = new DeleteCommand<dynamic>(key, data, deleteFromHead);
             return await command.ExecuteAsync();
+        }
+
+        public class Dummy
+        {
+            public Dummy() { }
+
+            public string Cereal { get; set; }
         }
 
     }

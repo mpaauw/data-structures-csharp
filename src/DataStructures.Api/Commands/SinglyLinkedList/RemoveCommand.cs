@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataStructures.Api.Commands.SinglyLinkedList
 {
-    public class RemoveCommand : Command<Result<string>>
+    public class RemoveCommand
     {
         private readonly string key;
         private readonly ConnectionMultiplexer redis;
@@ -19,7 +19,7 @@ namespace DataStructures.Api.Commands.SinglyLinkedList
             this.redis = ConnectionMultiplexer.Connect(Constants.RedisConfig);
         }
 
-        public override async Task<Result<string>> ExecuteAsync()
+        public async Task<Result<string>> ExecuteAsync()
         {
             try
             {

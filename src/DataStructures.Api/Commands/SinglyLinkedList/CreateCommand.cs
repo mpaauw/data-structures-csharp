@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DataStructures.Api.Commands.SinglyLinkedList
 {
-    public class CreateCommand<T> : Command<Result<string>>
+    public class CreateCommand 
     {
         public object List { get; set; }
 
@@ -27,7 +27,7 @@ namespace DataStructures.Api.Commands.SinglyLinkedList
             this.redis = redis;
         }
 
-        public override async Task<Result<string>> ExecuteAsync()
+        public async Task<Result<string>> ExecuteAsync()
         {
             try
             {
