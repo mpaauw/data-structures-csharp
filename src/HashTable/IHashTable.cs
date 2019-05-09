@@ -4,12 +4,12 @@ using System.Text;
 
 namespace HashTable
 {
-    public interface IHashTable<TKey, TValue>
+    public interface IHashTable<TValue>
     {
-        TValue Get(TKey key);
+        TValue Get(string key);
 
-        void Set(TKey key, TValue value);
+        void Set(string key, TValue value);
 
-        TValue Delete(TKey key);
+        TValue Delete(string key);
     }
 }
