@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList", "src\LinkedLis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList.Test", "test\LinkedList.Test\LinkedList.Test.csproj", "{A9EAD22A-DCF3-4753-B2C5-A15E419EB2EB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashTable", "src\HashTable\HashTable.csproj", "{614A53EC-44FC-41DC-875C-92EE3C023373}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A9EAD22A-DCF3-4753-B2C5-A15E419EB2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9EAD22A-DCF3-4753-B2C5-A15E419EB2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9EAD22A-DCF3-4753-B2C5-A15E419EB2EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{614A53EC-44FC-41DC-875C-92EE3C023373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{614A53EC-44FC-41DC-875C-92EE3C023373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{614A53EC-44FC-41DC-875C-92EE3C023373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{614A53EC-44FC-41DC-875C-92EE3C023373}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
